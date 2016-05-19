@@ -1,0 +1,316 @@
+Tiffany helped me investigate a failed ad.
+
+
+
+🐓  heroku run rails c -a fbaa
+Running rails c on fbaa... up, run.6019
+** [Honeybadger] Starting Honeybadger version 2.5.3 level=1 pid=3
+Loading production environment (Rails 4.2.5.1)
+irb(main):001:0> ad
+NameError: undefined local variable or method `ad' for main:Object
+  from (irb):1
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:110:in `start'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:9:in `start'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:68:in `console'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands.rb:17:in `<top (required)>'
+  from /app/bin/rails:4:in `require'
+  from /app/bin/rails:4:in `<main>'
+irb(main):002:0> Ad.find("e407ba90-8ee1-4cdd-b9a2-87ecfc650145")
+=> #<Ad id: "e407ba90-8ee1-4cdd-b9a2-87ecfc650145", deprecated_name: nil, created_at: "2016-04-10 23:30:01", updated_at: "2016-04-13 16:47:59", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: 100, target_impressions: 10000, ctct_account_id: "1101887117527", reach_ratio: nil, spend_ratio: nil, ad_account_id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", boost_activity_id: "80c574c2-ff15-49e0-a84e-6b162cd94989", geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "36e4f42a-5675-4b37-81d9-ffcfa79d2200">
+irb(main):003:0> ad = _
+=> #<Ad id: "e407ba90-8ee1-4cdd-b9a2-87ecfc650145", deprecated_name: nil, created_at: "2016-04-10 23:30:01", updated_at: "2016-04-13 16:47:59", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: 100, target_impressions: 10000, ctct_account_id: "1101887117527", reach_ratio: nil, spend_ratio: nil, ad_account_id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", boost_activity_id: "80c574c2-ff15-49e0-a84e-6b162cd94989", geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "36e4f42a-5675-4b37-81d9-ffcfa79d2200">
+irb(main):004:0> ad.ad_account
+=> #<AdAccount id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", facebook_id: "act_660244267447370", tos_accepted: true, user_provisioned: nil, facebook_page_name: "Provencal Home", facebook_page_id: "37720470543", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>
+irb(main):005:0> PublishAd.new(ad).call
+BG_PUBLISH: PublishAd#call ad_id: e407ba90-8ee1-4cdd-b9a2-87ecfc650145
+BG_PUBLISH: PublishAd#call ad_id: e407ba90-8ee1-4cdd-b9a2-87ecfc650145
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_account"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_account"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource terms_of_service"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource terms_of_service"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource user_permission"
+      PublishAd#publish_conditions met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource user_permission"
+      PublishAd#publish_conditions met
+
+BG_PUBLISH 1101887117527: Facebook::UserPermission#publish
+BG_PUBLISH 1101887117527: Facebook::UserPermission#publish
+type: OAuthException, code: 10, message: (#10) This business does not have access to this role. [HTTP 400]
+type: OAuthException, code: 10, message: (#10) This business does not have access to this role. [HTTP 400]
+Message: type: OAuthException, code: 10, message: (#10) This business does not have access to this role. [HTTP 400]
+          Koala data:
+          Error class: Koala::Facebook::ClientError
+          fb_error_type: OAuthException
+          fb_error_code: 10
+          fb_error_subcode: 
+          fb_error_user_title: 
+          http_status: 400
+
+Message: type: OAuthException, code: 10, message: (#10) This business does not have access to this role. [HTTP 400]
+          Koala data:
+          Error class: Koala::Facebook::ClientError
+          fb_error_type: OAuthException
+          fb_error_code: 10
+          fb_error_subcode: 
+          fb_error_user_title: 
+          http_status: 400
+
+RescueBlock invoked: PublishAd Ad e407ba90-8ee1-4cdd-b9a2-87ecfc650145 Message: type: OAuthException, code: 10, message: (#10) This business does not have access to this role. [HTTP 400]
+          Koala data:
+          Error class: Koala::Facebook::ClientError
+          fb_error_type: OAuthException
+          fb_error_code: 10
+          fb_error_subcode: 
+          fb_error_user_title: 
+          http_status: 400
+ /app/lib/koala_wrapper.rb:63:in `rescue in method_missing'
+/app/lib/koala_wrapper.rb:60:in `method_missing'
+/app/lib/koala_wrapper.rb:14:in `create_or_update'
+/app/app/models/facebook/user_permission.rb:22:in `assign_user'
+/app/app/models/facebook/user_permission.rb:12:in `publish'
+/app/app/services/publish_ad.rb:50:in `publish_resource'
+/app/app/services/publish_ad.rb:22:in `block in call'
+/app/lib/rescue_block.rb:3:in `on_rescue_fail'
+/app/app/services/publish_ad.rb:19:in `call'
+(irb):5:in `irb_binding'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `eval'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/context.rb:380:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:489:in `block (2 levels) in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:623:in `signal_status'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:486:in `block in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:246:in `block (2 levels) in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `loop'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `block in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:485:in `eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:395:in `block in start'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:110:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:9:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:68:in `console'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands.rb:17:in `<top (required)>'
+/app/bin/rails:4:in `require'
+/app/bin/rails:4:in `<main>'
+RescueBlock invoked: PublishAd Ad e407ba90-8ee1-4cdd-b9a2-87ecfc650145 Message: type: OAuthException, code: 10, message: (#10) This business does not have access to this role. [HTTP 400]
+          Koala data:
+          Error class: Koala::Facebook::ClientError
+          fb_error_type: OAuthException
+          fb_error_code: 10
+          fb_error_subcode: 
+          fb_error_user_title: 
+          http_status: 400
+ /app/lib/koala_wrapper.rb:63:in `rescue in method_missing'
+/app/lib/koala_wrapper.rb:60:in `method_missing'
+/app/lib/koala_wrapper.rb:14:in `create_or_update'
+/app/app/models/facebook/user_permission.rb:22:in `assign_user'
+/app/app/models/facebook/user_permission.rb:12:in `publish'
+/app/app/services/publish_ad.rb:50:in `publish_resource'
+/app/app/services/publish_ad.rb:22:in `block in call'
+/app/lib/rescue_block.rb:3:in `on_rescue_fail'
+/app/app/services/publish_ad.rb:19:in `call'
+(irb):5:in `irb_binding'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `eval'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/context.rb:380:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:489:in `block (2 levels) in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:623:in `signal_status'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:486:in `block in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:246:in `block (2 levels) in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `loop'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `block in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:485:in `eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:395:in `block in start'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:110:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:9:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:68:in `console'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands.rb:17:in `<top (required)>'
+/app/bin/rails:4:in `require'
+/app/bin/rails:4:in `<main>'
+=> true
+irb(main):006:0> Facebook::FbAdAccount.new(ad).send(:params)
+=> {:token_type=>:admin, :facebook_id=>"446744345464031", :endpoint=>"adaccount", :params=>{:name=>"Provencal Home", :currency=>"USD", :timezone_id=>1, :end_advertiser=>"37720470543", :media_agency=>"NONE", :partner=>"446744345464031", :invoice=>true}}
+irb(main):007:0> ad
+=> #<Ad id: "e407ba90-8ee1-4cdd-b9a2-87ecfc650145", deprecated_name: nil, created_at: "2016-04-10 23:30:01", updated_at: "2016-04-13 17:08:04", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: 100, target_impressions: 10000, ctct_account_id: "1101887117527", reach_ratio: nil, spend_ratio: nil, ad_account_id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", boost_activity_id: "80c574c2-ff15-49e0-a84e-6b162cd94989", geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "36e4f42a-5675-4b37-81d9-ffcfa79d2200">
+irb(main):008:0> ad.ad_account
+=> #<AdAccount id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", facebook_id: "act_660244267447370", tos_accepted: true, user_provisioned: nil, facebook_page_name: "Provencal Home", facebook_page_id: "37720470543", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>
+irb(main):009:0> exit
+13:48:10 2.3.0 (master) facebook-ads-adapter
+🐓  clear
+
+15:17:29 2.3.0 (master) facebook-ads-adapter
+🐓  heroku run rails c -a fbaa
+Running rails c on fbaa... up, run.8021
+** [Honeybadger] Starting Honeybadger version 2.5.3 level=1 pid=3
+Loading production environment (Rails 4.2.5.1)
+irb(main):001:0> Ad.find("e407ba90-8ee1-4cdd-b9a2-87ecfc650145")
+=> #<Ad id: "e407ba90-8ee1-4cdd-b9a2-87ecfc650145", deprecated_name: nil, created_at: "2016-04-10 23:30:01", updated_at: "2016-04-18 18:29:41", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: 100, target_impressions: 10000, ctct_account_id: "1101887117527", reach_ratio: nil, spend_ratio: nil, ad_account_id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", boost_activity_id: "80c574c2-ff15-49e0-a84e-6b162cd94989", geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "36e4f42a-5675-4b37-81d9-ffcfa79d2200">
+irb(main):002:0> ad = _
+=> #<Ad id: "e407ba90-8ee1-4cdd-b9a2-87ecfc650145", deprecated_name: nil, created_at: "2016-04-10 23:30:01", updated_at: "2016-04-18 18:29:41", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: 100, target_impressions: 10000, ctct_account_id: "1101887117527", reach_ratio: nil, spend_ratio: nil, ad_account_id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", boost_activity_id: "80c574c2-ff15-49e0-a84e-6b162cd94989", geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "36e4f42a-5675-4b37-81d9-ffcfa79d2200">
+irb(main):003:0> ad.ad_account
+=> #<AdAccount id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", facebook_id: "act_660244267447370", tos_accepted: true, user_provisioned: nil, facebook_page_name: "Provencal Home", facebook_page_id: "37720470543", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>
+irb(main):004:0> ad.ad_account.valid?
+=> false
+irb(main):005:0> ad.ad_account.errors
+=> #<ActiveModel::Errors:0x007ff6206f8948 @base=#<AdAccount id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", facebook_id: "act_660244267447370", tos_accepted: true, user_provisioned: nil, facebook_page_name: "Provencal Home", facebook_page_id: "37720470543", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>, @messages={:client_account_id=>["has already been taken"]}>
+irb(main):006:0> 16:22:14 2.3.0 (master) facebook-ads-adapter
+🐓  heroku run rails c -a fbaa
+Running rails c on fbaa... up, run.9889
+** [Honeybadger] Starting Honeybadger version 2.5.3 level=1 pid=3
+Loading production environment (Rails 4.2.5.1)
+irb(main):001:0> Ad.find("e407ba90-8ee1-4cdd-b9a2-87ecfc650145")
+=> #<Ad id: "e407ba90-8ee1-4cdd-b9a2-87ecfc650145", deprecated_name: nil, created_at: "2016-04-10 23:30:01", updated_at: "2016-04-18 18:29:41", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: 100, target_impressions: 10000, ctct_account_id: "1101887117527", reach_ratio: nil, spend_ratio: nil, ad_account_id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", boost_activity_id: "80c574c2-ff15-49e0-a84e-6b162cd94989", geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "36e4f42a-5675-4b37-81d9-ffcfa79d2200">
+irb(main):002:0> a = _ 
+=> #<Ad id: "e407ba90-8ee1-4cdd-b9a2-87ecfc650145", deprecated_name: nil, created_at: "2016-04-10 23:30:01", updated_at: "2016-04-18 18:29:41", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: 100, target_impressions: 10000, ctct_account_id: "1101887117527", reach_ratio: nil, spend_ratio: nil, ad_account_id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", boost_activity_id: "80c574c2-ff15-49e0-a84e-6b162cd94989", geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "36e4f42a-5675-4b37-81d9-ffcfa79d2200">
+irb(main):003:0> a.ad_account.facebook_id
+=> "act_660244267447370"
+irb(main):004:0> a.ad_account.update(facebook_id: 'act_
+irb(main):005:1' 593521147453016')
+=> false
+irb(main):006:0> a.ad_account.valid?
+=> false
+irb(main):007:0> a.ad_account.errors
+=> #<ActiveModel::Errors:0x007f6baf5e7d20 @base=#<AdAccount id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", facebook_id: "act_\n593521147453016", tos_accepted: true, user_provisioned: nil, facebook_page_name: "Provencal Home", facebook_page_id: "37720470543", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>, @messages={:client_account_id=>["has already been taken"]}>
+irb(main):008:0> a.ad_account.update(facebook_id: 'act_
+irb(main):009:1' 593521147453^C
+irb(main):009:0> 
+irb(main):010:0* 593521147453016^C
+irb(main):010:0> a.ad_account.update(facebook_id: 'act_593521147453016')
+=> false
+irb(main):011:0> a.ad_account
+=> #<AdAccount id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", facebook_id: "act_593521147453016", tos_accepted: true, user_provisioned: nil, facebook_page_name: "Provencal Home", facebook_page_id: "37720470543", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>
+irb(main):012:0> a.valid?
+=> true
+irb(main):013:0> a.ad_account.valid?
+=> false
+irb(main):014:0> a.ad_account.errors
+=> #<ActiveModel::Errors:0x007f6baf5e7d20 @base=#<AdAccount id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", facebook_id: "act_593521147453016", tos_accepted: true, user_provisioned: nil, facebook_page_name: "Provencal Home", facebook_page_id: "37720470543", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>, @messages={:client_account_id=>["has already been taken"]}>
+irb(main):015:0> a.ad_account.save(validate: false)
+=> true
+irb(main):016:0> a.ad_account.update(user_provisioned: true)
+=> false
+irb(main):017:0> a.ad_account.save(validate: false)
+=> true
+irb(main):018:0> PublishAd.new(a).call
+BG_PUBLISH: PublishAd#call ad_id: e407ba90-8ee1-4cdd-b9a2-87ecfc650145
+BG_PUBLISH: PublishAd#call ad_id: e407ba90-8ee1-4cdd-b9a2-87ecfc650145
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_account"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_account"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource terms_of_service"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource terms_of_service"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource user_permission"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource user_permission"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource custom_audience"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource custom_audience"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_campaign"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_campaign"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_set"
+      PublishAd#publish_conditions met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_set"
+      PublishAd#publish_conditions met
+
+BG_PUBLISH: Facebook::Base#publish Facebook::FbAdSet ad_id: e407ba90-8ee1-4cdd-b9a2-87ecfc650145
+BG_PUBLISH: Facebook::Base#publish Facebook::FbAdSet ad_id: e407ba90-8ee1-4cdd-b9a2-87ecfc650145
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_form"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_form"
+      PublishAd#publish_conditions not met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_creative"
+      PublishAd#publish_conditions met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_creative"
+      PublishAd#publish_conditions met
+
+BG_PUBLISH: Facebook::Base#publish Facebook::FbAdCreative ad_id: e407ba90-8ee1-4cdd-b9a2-87ecfc650145
+BG_PUBLISH: Facebook::Base#publish Facebook::FbAdCreative ad_id: e407ba90-8ee1-4cdd-b9a2-87ecfc650145
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_group"
+      PublishAd#publish_conditions met
+
+      BG_PUBLISH 1101887117527:
+      PublishAd#publish_resource fb_ad_group"
+      PublishAd#publish_conditions met
+
+BG_PUBLISH: Facebook::Base#publish Facebook::FbAdGroup ad_id: e407ba90-8ee1-4cdd-b9a2-87ecfc650145
+BG_PUBLISH: Facebook::Base#publish Facebook::FbAdGroup ad_id: e407ba90-8ee1-4cdd-b9a2-87ecfc650145
+=> true
+irb(main):019:0> a.name
+NoMethodError: undefined method `name' for #<Ad:0x007f6baf58e860>
+  from /app/vendor/bundle/ruby/2.3.0/gems/activemodel-4.2.5.1/lib/active_model/attribute_methods.rb:433:in `method_missing'
+  from /app/lib/facebook_resource.rb:10:in `method_missing'
+  from (irb):19
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:110:in `start'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:9:in `start'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:68:in `console'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands.rb:17:in `<top (required)>'
+  from /app/bin/rails:4:in `require'
+  from /app/bin/rails:4:in `<main>'
+irb(main):020:0> a.ad_creative.name
+=> "Spring Floor Sample Sale"
+irb(main):021:0> a.id
+=> "e407ba90-8ee1-4cdd-b9a2-87ecfc650145"
+irb(main):022:0> 12:43:10 2.3.0 (master) facebook-ads-adapter

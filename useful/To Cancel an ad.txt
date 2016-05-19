@@ -1,0 +1,12 @@
+heroku run rails c -a fbaa
+Running rails c on fbaa... up, run.1448
+** [Honeybadger] Starting Honeybadger version 2.6.0 level=1 pid=3
+Loading production environment (Rails 4.2.5.1)
+irb(main):001:0> 
+
+
+
+irb(main):017:0> ad.update(publish_state: "canceled")
+=> true
+irb(main):018:0> ad.publish_state
+=> "canceled"

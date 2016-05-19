@@ -1,0 +1,60 @@
+heroku run rails c -a fbaa
+Running rails c on fbaa... up, run.2728
+** [Honeybadger] Starting Honeybadger version 2.6.0 level=1 pid=3
+Loading production environment (Rails 4.2.5.1)
+irb(main):001:0> ad = Ad.find("90d2cf9f-eb17-4451-a961-a942094eb6c6")
+=> #<Ad id: "90d2cf9f-eb17-4451-a961-a942094eb6c6", deprecated_name: nil, created_at: "2016-05-18 00:00:02", updated_at: "2016-05-18 00:00:03", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: 250, target_impressions: 25000, ctct_account_id: "1107137306881", reach_ratio: nil, spend_ratio: nil, ad_account_id: "54d9b9e6-e819-41e1-a75c-abc67a4631ad", boost_activity_id: "517b701b-4c3d-4fe1-a259-c855c02a1a4e", geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "3ed3cec1-a46c-4f3e-bd40-ccb1f2c7d07e", objective: 0>
+
+irb(main):002:0> ad.ad_account
+=> #<AdAccount id: "54d9b9e6-e819-41e1-a75c-abc67a4631ad", facebook_id: "act_703322289806234", tos_accepted: true, user_provisioned: true, facebook_page_name: "Roofing and Pond Supplies", facebook_page_id: "159100904296", ctct_account_id: nil, api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: "05e44e2c-0d56-4b95-92cf-e3c13c28003c">
+irb(main):003:0> ad.ad_account.update(facebook_id: "")
+=> true
+irb(main):004:0> ad.ad_account.update(tos_accepted: false)
+=> true
+irb(main):005:0> ad.ad_account.update(user_provisioned: false)
+=> true
+irb(main):006:0> ad.ad_account
+=> #<AdAccount id: "54d9b9e6-e819-41e1-a75c-abc67a4631ad", facebook_id: "", tos_accepted: false, user_provisioned: false, facebook_page_name: "Roofing and Pond Supplies", facebook_page_id: "159100904296", ctct_account_id: nil, api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: "05e44e2c-0d56-4b95-92cf-e3c13c28003c">
+
+irb(main):007:0> PublishAd.new(ad).call
+
+BG_PUBLISH: PublishAd#call ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+BG_PUBLISH: PublishAd#call ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+Facebook::FbAdAccount#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+Facebook::FbAdAccount#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+publish conditions met
+publish conditions met
+Facebook::TermsOfService#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+Facebook::TermsOfService#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+publish conditions met
+publish conditions met
+Facebook::UserPermission#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+Facebook::UserPermission#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+publish conditions met
+publish conditions met
+Facebook::CustomAudience#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+Facebook::CustomAudience#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+publish conditions met
+publish conditions met
+Facebook::FbAdCampaign#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+Facebook::FbAdCampaign#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+publish conditions met
+publish conditions met
+Facebook::FbAdSet#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+Facebook::FbAdSet#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+publish conditions met
+publish conditions met
+Facebook::FbAdForm#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+Facebook::FbAdForm#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+publish conditions not met
+publish conditions not met
+Facebook::FbAdCreative#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+Facebook::FbAdCreative#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+publish conditions met
+publish conditions met
+Facebook::FbAdGroup#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+Facebook::FbAdGroup#publish ad_id: 90d2cf9f-eb17-4451-a961-a942094eb6c6
+publish conditions met
+publish conditions met
+=> true
+irb(main):008:0> 

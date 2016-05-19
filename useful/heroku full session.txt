@@ -1,0 +1,301 @@
+heroku run rails c -a fbaa
+Enter your Heroku credentials.
+Email: jcook@constantcontact.com
+Password (typing will be hidden): 
+Logged in as jcook@constantcontact.com
+Running rails c on fbaa... up, run.6526
+** [Honeybadger] Starting Honeybadger version 2.5.3 level=1 pid=3
+Loading production environment (Rails 4.2.5.1)
+irb(main):001:0> ad = Ad.find("e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8")
+=> #<Ad id: "e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8", deprecated_name: nil, created_at: "2016-04-12 04:45:02", updated_at: "2016-04-12 15:14:27", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: 100, target_impressions: 10000, ctct_account_id: "1120499345872", reach_ratio: nil, spend_ratio: nil, ad_account_id: "e982ac29-8bbd-4cb1-aca1-1b9298e4a8f8", boost_activity_id: "cbb90866-1fbb-4ba9-81a4-d0b42d42791a", geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "a5b98afa-1895-438d-bbf7-9fd6d9dde9d4">
+irb(main):002:0> ad.ad_account
+=> #<AdAccount id: "e982ac29-8bbd-4cb1-aca1-1b9298e4a8f8", facebook_id: nil, tos_accepted: nil, user_provisioned: nil, facebook_page_name: "Green Sports Camp", facebook_page_id: "231370247225174", ctct_account_id: nil, api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: "dde74b4f-6fc1-497b-a3b7-feeb3877a25f">
+irb(main):003:0> PublishAd.new(ad).call
+BG_PUBLISH: PublishAd#call ad_id: e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8
+BG_PUBLISH: PublishAd#call ad_id: e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8
+      BG_PUBLISH 1120499345872:
+      PublishAd#publish_resource fb_ad_account"
+      PublishAd#publish_conditions met
+
+      BG_PUBLISH 1120499345872:
+      PublishAd#publish_resource fb_ad_account"
+      PublishAd#publish_conditions met
+
+type: OAuthException, code: 3932, error_subcode: 1690042, message: This Business Manager is not correctly configured for invoicing. Please contact your sales representative., error_user_title: Not Configured for Business Invoicing, error_user_msg: Constant Contact - Boost is not correctly configured for invoicing. Please contact your sales representative. [HTTP 400]
+type: OAuthException, code: 3932, error_subcode: 1690042, message: This Business Manager is not correctly configured for invoicing. Please contact your sales representative., error_user_title: Not Configured for Business Invoicing, error_user_msg: Constant Contact - Boost is not correctly configured for invoicing. Please contact your sales representative. [HTTP 400]
+Message: type: OAuthException, code: 3932, error_subcode: 1690042, message: This Business Manager is not correctly configured for invoicing. Please contact your sales representative., error_user_title: Not Configured for Business Invoicing, error_user_msg: Constant Contact - Boost is not correctly configured for invoicing. Please contact your sales representative. [HTTP 400]
+          Koala data:
+          Error class: Koala::Facebook::ClientError
+          fb_error_type: OAuthException
+          fb_error_code: 3932
+          fb_error_subcode: 1690042
+          fb_error_user_title: Not Configured for Business Invoicing
+          http_status: 400
+
+Message: type: OAuthException, code: 3932, error_subcode: 1690042, message: This Business Manager is not correctly configured for invoicing. Please contact your sales representative., error_user_title: Not Configured for Business Invoicing, error_user_msg: Constant Contact - Boost is not correctly configured for invoicing. Please contact your sales representative. [HTTP 400]
+          Koala data:
+          Error class: Koala::Facebook::ClientError
+          fb_error_type: OAuthException
+          fb_error_code: 3932
+          fb_error_subcode: 1690042
+          fb_error_user_title: Not Configured for Business Invoicing
+          http_status: 400
+
+RescueBlock invoked: PublishAd Ad e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8 Message: type: OAuthException, code: 3932, error_subcode: 1690042, message: This Business Manager is not correctly configured for invoicing. Please contact your sales representative., error_user_title: Not Configured for Business Invoicing, error_user_msg: Constant Contact - Boost is not correctly configured for invoicing. Please contact your sales representative. [HTTP 400]
+          Koala data:
+          Error class: Koala::Facebook::ClientError
+          fb_error_type: OAuthException
+          fb_error_code: 3932
+          fb_error_subcode: 1690042
+          fb_error_user_title: Not Configured for Business Invoicing
+          http_status: 400
+ /app/lib/koala_wrapper.rb:63:in `rescue in method_missing'
+/app/lib/koala_wrapper.rb:60:in `method_missing'
+/app/lib/koala_wrapper.rb:14:in `create_or_update'
+/app/app/models/facebook/fb_ad_account.rb:28:in `publish'
+/app/app/services/publish_ad.rb:50:in `publish_resource'
+/app/app/services/publish_ad.rb:20:in `block in call'
+/app/lib/rescue_block.rb:3:in `on_rescue_fail'
+/app/app/services/publish_ad.rb:19:in `call'
+(irb):3:in `irb_binding'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `eval'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/context.rb:380:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:489:in `block (2 levels) in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:623:in `signal_status'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:486:in `block in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:246:in `block (2 levels) in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `loop'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `block in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:485:in `eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:395:in `block in start'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:110:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:9:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:68:in `console'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands.rb:17:in `<top (required)>'
+/app/bin/rails:4:in `require'
+/app/bin/rails:4:in `<main>'
+RescueBlock invoked: PublishAd Ad e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8 Message: type: OAuthException, code: 3932, error_subcode: 1690042, message: This Business Manager is not correctly configured for invoicing. Please contact your sales representative., error_user_title: Not Configured for Business Invoicing, error_user_msg: Constant Contact - Boost is not correctly configured for invoicing. Please contact your sales representative. [HTTP 400]
+          Koala data:
+          Error class: Koala::Facebook::ClientError
+          fb_error_type: OAuthException
+          fb_error_code: 3932
+          fb_error_subcode: 1690042
+          fb_error_user_title: Not Configured for Business Invoicing
+          http_status: 400
+ /app/lib/koala_wrapper.rb:63:in `rescue in method_missing'
+/app/lib/koala_wrapper.rb:60:in `method_missing'
+/app/lib/koala_wrapper.rb:14:in `create_or_update'
+/app/app/models/facebook/fb_ad_account.rb:28:in `publish'
+/app/app/services/publish_ad.rb:50:in `publish_resource'
+/app/app/services/publish_ad.rb:20:in `block in call'
+/app/lib/rescue_block.rb:3:in `on_rescue_fail'
+/app/app/services/publish_ad.rb:19:in `call'
+(irb):3:in `irb_binding'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `eval'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/context.rb:380:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:489:in `block (2 levels) in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:623:in `signal_status'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:486:in `block in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:246:in `block (2 levels) in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `loop'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `block in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:485:in `eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:395:in `block in start'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:110:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:9:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:68:in `console'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands.rb:17:in `<top (required)>'
+/app/bin/rails:4:in `require'
+/app/bin/rails:4:in `<main>'
+=> true
+irb(main):004:0> Facebook::FbAdAccount.new(ad).send(:params)
+=> {:token_type=>:admin, :facebook_id=>"446744345464031", :endpoint=>"adaccount", :params=>{:name=>"Green Sports Camp", :currency=>"USD", :timezone_id=>1, :end_advertiser=>"231370247225174", :media_agency=>"NONE", :partner=>"446744345464031", :invoice=>true}}
+irb(main):005:0> exit
+11:37:53 2.3.0 (master) ad-launcher
+🐓  heroku run rails c -a fbaa
+Heroku CLI submits usage information back to Heroku. If you would like to disable this, set `skip_analytics: true` in /Users/jcook/.heroku/config.json
+Running rails c on fbaa... up, run.5351
+** [Honeybadger] Starting Honeybadger version 2.5.3 level=1 pid=3
+Loading production environment (Rails 4.2.5.1)
+irb(main):001:0> ad = Ad.find("e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8")
+=> #<Ad id: "e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8", deprecated_name: nil, created_at: "2016-04-12 04:45:02", updated_at: "2016-04-13 14:06:57", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: 100, target_impressions: 10000, ctct_account_id: "1120499345872", reach_ratio: nil, spend_ratio: nil, ad_account_id: "e982ac29-8bbd-4cb1-aca1-1b9298e4a8f8", boost_activity_id: "cbb90866-1fbb-4ba9-81a4-d0b42d42791a", geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "a5b98afa-1895-438d-bbf7-9fd6d9dde9d4">
+irb(main):002:0> PublishAd.new(ad).call
+BG_PUBLISH: PublishAd#call ad_id: e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8
+BG_PUBLISH: PublishAd#call ad_id: e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8
+      BG_PUBLISH 1120499345872:
+      PublishAd#publish_resource fb_ad_account"
+      PublishAd#publish_conditions met
+
+      BG_PUBLISH 1120499345872:
+      PublishAd#publish_resource fb_ad_account"
+      PublishAd#publish_conditions met
+
+type: OAuthException, code: 3932, error_subcode: 1690042, message: This Business Manager is not correctly configured for invoicing. Please contact your sales representative., error_user_title: Not Configured for Business Invoicing, error_user_msg: Constant Contact - Boost is not correctly configured for invoicing. Please contact your sales representative. [HTTP 400]
+type: OAuthException, code: 3932, error_subcode: 1690042, message: This Business Manager is not correctly configured for invoicing. Please contact your sales representative., error_user_title: Not Configured for Business Invoicing, error_user_msg: Constant Contact - Boost is not correctly configured for invoicing. Please contact your sales representative. [HTTP 400]
+Message: type: OAuthException, code: 3932, error_subcode: 1690042, message: This Business Manager is not correctly configured for invoicing. Please contact your sales representative., error_user_title: Not Configured for Business Invoicing, error_user_msg: Constant Contact - Boost is not correctly configured for invoicing. Please contact your sales representative. [HTTP 400]
+          Koala data:
+          Error class: Koala::Facebook::ClientError
+          fb_error_type: OAuthException
+          fb_error_code: 3932
+          fb_error_subcode: 1690042
+          fb_error_user_title: Not Configured for Business Invoicing
+          http_status: 400
+
+Message: type: OAuthException, code: 3932, error_subcode: 1690042, message: This Business Manager is not correctly configured for invoicing. Please contact your sales representative., error_user_title: Not Configured for Business Invoicing, error_user_msg: Constant Contact - Boost is not correctly configured for invoicing. Please contact your sales representative. [HTTP 400]
+          Koala data:
+          Error class: Koala::Facebook::ClientError
+          fb_error_type: OAuthException
+          fb_error_code: 3932
+          fb_error_subcode: 1690042
+          fb_error_user_title: Not Configured for Business Invoicing
+          http_status: 400
+
+RescueBlock invoked: PublishAd Ad e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8 Message: type: OAuthException, code: 3932, error_subcode: 1690042, message: This Business Manager is not correctly configured for invoicing. Please contact your sales representative., error_user_title: Not Configured for Business Invoicing, error_user_msg: Constant Contact - Boost is not correctly configured for invoicing. Please contact your sales representative. [HTTP 400]
+          Koala data:
+          Error class: Koala::Facebook::ClientError
+          fb_error_type: OAuthException
+          fb_error_code: 3932
+          fb_error_subcode: 1690042
+          fb_error_user_title: Not Configured for Business Invoicing
+          http_status: 400
+ /app/lib/koala_wrapper.rb:63:in `rescue in method_missing'
+/app/lib/koala_wrapper.rb:60:in `method_missing'
+/app/lib/koala_wrapper.rb:14:in `create_or_update'
+/app/app/models/facebook/fb_ad_account.rb:28:in `publish'
+/app/app/services/publish_ad.rb:50:in `publish_resource'
+/app/app/services/publish_ad.rb:20:in `block in call'
+/app/lib/rescue_block.rb:3:in `on_rescue_fail'
+/app/app/services/publish_ad.rb:19:in `call'
+(irb):2:in `irb_binding'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `eval'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/context.rb:380:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:489:in `block (2 levels) in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:623:in `signal_status'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:486:in `block in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:246:in `block (2 levels) in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `loop'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `block in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:485:in `eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:395:in `block in start'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:110:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:9:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:68:in `console'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands.rb:17:in `<top (required)>'
+/app/bin/rails:4:in `require'
+/app/bin/rails:4:in `<main>'
+RescueBlock invoked: PublishAd Ad e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8 Message: type: OAuthException, code: 3932, error_subcode: 1690042, message: This Business Manager is not correctly configured for invoicing. Please contact your sales representative., error_user_title: Not Configured for Business Invoicing, error_user_msg: Constant Contact - Boost is not correctly configured for invoicing. Please contact your sales representative. [HTTP 400]
+          Koala data:
+          Error class: Koala::Facebook::ClientError
+          fb_error_type: OAuthException
+          fb_error_code: 3932
+          fb_error_subcode: 1690042
+          fb_error_user_title: Not Configured for Business Invoicing
+          http_status: 400
+ /app/lib/koala_wrapper.rb:63:in `rescue in method_missing'
+/app/lib/koala_wrapper.rb:60:in `method_missing'
+/app/lib/koala_wrapper.rb:14:in `create_or_update'
+/app/app/models/facebook/fb_ad_account.rb:28:in `publish'
+/app/app/services/publish_ad.rb:50:in `publish_resource'
+/app/app/services/publish_ad.rb:20:in `block in call'
+/app/lib/rescue_block.rb:3:in `on_rescue_fail'
+/app/app/services/publish_ad.rb:19:in `call'
+(irb):2:in `irb_binding'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `eval'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/context.rb:380:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:489:in `block (2 levels) in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:623:in `signal_status'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:486:in `block in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:246:in `block (2 levels) in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `loop'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `block in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:485:in `eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:395:in `block in start'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:110:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:9:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:68:in `console'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands.rb:17:in `<top (required)>'
+/app/bin/rails:4:in `require'
+/app/bin/rails:4:in `<main>'
+=> true
+irb(main):003:0> Facebook::FbAdAccount.new(ad).send(:params)
+=> {:token_type=>:admin, :facebook_id=>"446744345464031", :endpoint=>"adaccount", :params=>{:name=>"Green Sports Camp", :currency=>"USD", :timezone_id=>1, :end_advertiser=>"231370247225174", :media_agency=>"NONE", :partner=>"446744345464031", :invoice=>true}}
+irb(main):004:0> 11:16:41 2.3.0 (master) ad-launcher
+🐓  pwd
+/Users/jcook/code/ad-launcher
+12:22:31 2.3.0 (master) ad-launcher
+🐓  cd ../facebook-ads-adapter/
+12:22:37 2.3.0 (master) facebook-ads-adapter
+🐓  heroku run rails c -a fbaa
+Running rails c on fbaa... up, run.8078
+** [Honeybadger] Starting Honeybadger version 2.5.3 level=1 pid=3
+Loading production environment (Rails 4.2.5.1)
+irb(main):001:0> Ad.find("e407ba90-8ee1-4cdd-b9a2-87ecfc650145")
+=> #<Ad id: "e407ba90-8ee1-4cdd-b9a2-87ecfc650145", deprecated_name: nil, created_at: "2016-04-10 23:30:01", updated_at: "2016-04-10 23:30:04", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: 100, target_impressions: 10000, ctct_account_id: "1101887117527", reach_ratio: nil, spend_ratio: nil, ad_account_id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", boost_activity_id: "80c574c2-ff15-49e0-a84e-6b162cd94989", geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "36e4f42a-5675-4b37-81d9-ffcfa79d2200">
+irb(main):002:0> ad = _
+=> #<Ad id: "e407ba90-8ee1-4cdd-b9a2-87ecfc650145", deprecated_name: nil, created_at: "2016-04-10 23:30:01", updated_at: "2016-04-10 23:30:04", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: 100, target_impressions: 10000, ctct_account_id: "1101887117527", reach_ratio: nil, spend_ratio: nil, ad_account_id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", boost_activity_id: "80c574c2-ff15-49e0-a84e-6b162cd94989", geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "36e4f42a-5675-4b37-81d9-ffcfa79d2200">
+irb(main):003:0> ad.ad_account
+=> #<AdAccount id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", facebook_id: "act_660244267447370", tos_accepted: true, user_provisioned: nil, facebook_page_name: "Provencal Home", facebook_page_id: "37720470543", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>
+irb(main):004:0> AdAccount.find_by(facebook_id:"act_593521147453016")
+=> #<AdAccount id: "3c5792bd-208a-4aec-aac0-a67b48c84a08", facebook_id: "act_593521147453016", tos_accepted: true, user_provisioned: true, facebook_page_name: "Provencal Home", facebook_page_id: "33373732-3034-3730-3534-330000000000", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>
+irb(main):005:0> ad.update(ad_account_id: "3c5792bd-208a-4aec-aac0-a67b48c84a08")
+=> true
+irb(main):006:0> ad.ad_account.facebook_id
+=> "act_593521147453016"
+irb(main):007:0> ad.ad_campaign.update(facebook_id: nil)
+=> true
+irb(main):008:0> ad.ad_set.update(facebook_id: nil)
+=> true
+irb(main):009:0> ad.ad_creative.update(facebook_id: nil)
+=> true
+irb(main):010:0> ad.ad_group.update(facebook_id: nil)
+=> true
+irb(main):011:0> ad.ad_account.facebook_page_id
+=> "33373732-3034-3730-3534-330000000000"
+irb(main):012:0> ad.ad_account.update(facebook_page_id: '37720470543')
+=> false
+irb(main):013:0> ad.ad_account.valid?
+=> false
+irb(main):014:0> ad.ad_account.errors
+=> #<ActiveModel::Errors:0x007fd958e8f1a0 @base=#<AdAccount id: "3c5792bd-208a-4aec-aac0-a67b48c84a08", facebook_id: "act_593521147453016", tos_accepted: true, user_provisioned: true, facebook_page_name: "Provencal Home", facebook_page_id: "37720470543", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>, @messages={:client_account_id=>["has already been taken"]}>
+irb(main):015:0> AdAccount.find_by(facebook_id:"act_660244267447370")
+=> #<AdAccount id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", facebook_id: "act_660244267447370", tos_accepted: true, user_provisioned: nil, facebook_page_name: "Provencal Home", facebook_page_id: "37720470543", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>
+irb(main):016:0> ad.update(ad_account_id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac")
+=> true
+irb(main):017:0> AdAccount.find("3c5792bd-208a-4aec-aac0-a67b48c84a08").destroy
+=> #<AdAccount id: "3c5792bd-208a-4aec-aac0-a67b48c84a08", facebook_id: "act_593521147453016", tos_accepted: true, user_provisioned: true, facebook_page_name: "Provencal Home", facebook_page_id: "33373732-3034-3730-3534-330000000000", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>
+irb(main):018:0> AdAccount.find("3c5792bd-208a-4aec-aac0-a67b48c84a08")
+ActiveRecord::RecordNotFound: Couldn't find AdAccount with 'id'=3c5792bd-208a-4aec-aac0-a67b48c84a08
+  from /app/vendor/bundle/ruby/2.3.0/gems/activerecord-4.2.5.1/lib/active_record/core.rb:155:in `find'
+  from (irb):18
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:110:in `start'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:9:in `start'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:68:in `console'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands.rb:17:in `<top (required)>'
+  from /app/bin/rails:4:in `require'
+  from /app/bin/rails:4:in `<main>'
+irb(main):019:0> 

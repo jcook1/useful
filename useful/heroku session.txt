@@ -1,0 +1,99 @@
+heroku run rails c -a fbaa
+Enter your Heroku credentials.
+Email: jcook@constantcontact.com
+Password (typing will be hidden): 
+Logged in as jcook@constantcontact.com
+Running rails c on fbaa... up, run.6526
+** [Honeybadger] Starting Honeybadger version 2.5.3 level=1 pid=3
+Loading production environment (Rails 4.2.5.1)
+
+To find an ad by the ID from FBAA (from the URL)
+irb(main):001:0> ad = Ad.find("e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8")
+
+To get the Facebook ad_account ID
+irb(main):002:0> ad.ad_account
+
+Try to republish
+irb(main):003:0> PublishAd.new(ad).call
+
+To get the info you need to send to file a bug with Facebook
+irb(main):004:0> Facebook::FbAdAccount.new(ad).send(:params)
+
+leave...
+irb(main):005:0> exit
+
+
+11:37:53 2.3.0 (master) ad-launcher
+🐓  heroku run rails c -a fbaa
+irb(main):001:0> ad = Ad.find("e1cb33c5-ef5f-4e43-8d46-67cf667bdeb8")
+irb(main):002:0> PublishAd.new(ad).call
+irb(main):003:0> Facebook::FbAdAccount.new(ad).send(:params)
+irb(main):004:0> 11:16:41 2.3.0 (master) ad-launcher
+
+
+🐓  heroku run rails c -a fbaa
+Running rails c on fbaa... up, run.8078
+** [Honeybadger] Starting Honeybadger version 2.5.3 level=1 pid=3
+Loading production environment (Rails 4.2.5.1)
+irb(main):001:0> Ad.find("e407ba90-8ee1-4cdd-b9a2-87ecfc650145")
+
+to assign the last thing I did to a variable.
+irb(main):002:0> ad = _
+
+irb(main):003:0> ad.ad_account
+irb(main):004:0> AdAccount.find_by(facebook_id:"act_593521147453016")
+
+to update the ad_account_id on an ad (for this error https://adsapi.io/admin/ad_failure_types/8f9509d6-50f6-4c4d-b2a1-ab8c5b04b206)
+irb(main):005:0> ad.update(ad_account_id: "3c5792bd-208a-4aec-aac0-a67b48c84a08")
+
+make sure it was reset properly
+irb(main):006:0> ad.ad_account.facebook_id
+
+nil out the rest of places where the facebook_id is used so the ad can try to be republished
+irb(main):007:0> ad.ad_campaign.update(facebook_id: nil)
+irb(main):008:0> ad.ad_set.update(facebook_id: nil)
+irb(main):009:0> ad.ad_creative.update(facebook_id: nil)
+irb(main):010:0> ad.ad_group.update(facebook_id: nil)
+
+check the facebook_page_id
+irb(main):011:0> ad.ad_account.facebook_page_id
+=> "33373732-3034-3730-3534-330000000000"
+SHOULDN'T BE THAT LONG
+
+try to update it - get it from here:  https://business.facebook.com/settings/pages/201944089825684?business_id=446744345464031
+irb(main):012:0> ad.ad_account.update(facebook_page_id: '37720470543')
+=> false
+
+See if the ad account is valid
+irb(main):013:0> ad.ad_account.valid?
+=> false
+
+check the errors.
+irb(main):014:0> ad.ad_account.errors
+=> #<ActiveModel::Errors:0x007fd958e8f1a0 @base=#<AdAccount id: "3c5792bd-208a-4aec-aac0-a67b48c84a08", facebook_id: "act_593521147453016", tos_accepted: true, user_provisioned: true, facebook_page_name: "Provencal Home", facebook_page_id: "37720470543", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>, @messages={:client_account_id=>["has already been taken"]}>
+
+Find an ad_account by the facebook_id
+irb(main):015:0> AdAccount.find_by(facebook_id:"act_660244267447370")
+=> #<AdAccount id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac", facebook_id: "act_660244267447370", tos_accepted: true, user_provisioned: nil, facebook_page_name: "Provencal Home", facebook_page_id: "37720470543", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>
+
+update the ad_account_id on an ad (same as before but in reverse...)
+irb(main):016:0> ad.update(ad_account_id: "5bd6004c-918b-4b93-a5b9-8b64b2e96bac")
+=> true
+
+destroy an ad_account
+irb(main):017:0> AdAccount.find("3c5792bd-208a-4aec-aac0-a67b48c84a08").destroy
+=> #<AdAccount id: "3c5792bd-208a-4aec-aac0-a67b48c84a08", facebook_id: "act_593521147453016", tos_accepted: true, user_provisioned: true, facebook_page_name: "Provencal Home", facebook_page_id: "33373732-3034-3730-3534-330000000000", ctct_account_id: "1101887117527", api_consumer_id: "1665eeb4-bf95-46ef-95b1-fd3eb40af603", client_account_id: nil>
+
+verify that it was destroyed
+irb(main):018:0> AdAccount.find("3c5792bd-208a-4aec-aac0-a67b48c84a08")
+ActiveRecord::RecordNotFound: Couldn't find AdAccount with 'id'=3c5792bd-208a-4aec-aac0-a67b48c84a08
+  from /app/vendor/bundle/ruby/2.3.0/gems/activerecord-4.2.5.1/lib/active_record/core.rb:155:in `find'
+  from (irb):18
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:110:in `start'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/console.rb:9:in `start'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:68:in `console'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.5.1/lib/rails/commands.rb:17:in `<top (required)>'
+  from /app/bin/rails:4:in `require'
+  from /app/bin/rails:4:in `<main>'
+irb(main):019:0> 

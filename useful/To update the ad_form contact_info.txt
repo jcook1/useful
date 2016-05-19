@@ -1,0 +1,7 @@
+irb(main):012:0> ad.ad_form.update(contact_info: ["446872765494724", "891455540903772"])
+=> true
+irb(main):013:0> ad.ad_form.contact_info
+=> ["446872765494724", "891455540903772"]
+
+Try to republish
+irb(main):003:0> PublishAd.new(ad).call
