@@ -1,0 +1,10 @@
+Activating an ad that has been pending for a while...
+
+Probably comes from MO pausing the ad at the wrong place so long ago...
+
+Go into BM:
+https://business.facebook.com/ads/manager/account/campaigns/?act=710664202405376&pid=p1&business_id=446744345464031
+
+Activate it here (if it is not activated)
+
+Then wait for it to get picked up by the ActivateAds job.

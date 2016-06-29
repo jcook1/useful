@@ -1,0 +1,34 @@
+To Claim a Facebook page (Koala error)
+
+unknown koala error including this:
+ /app/lib/koala_wrapper.rb:60:in `rescue in method_missing'
+/app/lib/koala_wrapper.rb:57:in `method_missing'
+/app/lib/koala_wrapper.rb:14:in `create_or_update'
+/app/app/models/facebook/terms_of_service.rb:25:in `accept_tos'
+
+try reclaiming the Facebook Page in the console in AdLauncher
+
+heroku run rails c -a ad-launcher
+Running rails c on ⬢ ad-launcher... up, run.5382
+** [Honeybadger] Starting Honeybadger version 2.6.0 level=1 pid=3
+Loading production environment (Rails 4.2.6)
+irb(main):001:0> c = Campaign.find_by(fbaa_id: "b8964c28-b69a-4ba3-b28b-e16b11188844")
+  Campaign Load (8.5ms)  SELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."fbaa_id" = $1 LIMIT 1  [["fbaa_id", "b8964c28-b69a-4ba3-b28b-e16b11188844"]]
+  Campaign Load (8.5ms)  SELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."fbaa_id" = $1 LIMIT 1  [["fbaa_id", "b8964c28-b69a-4ba3-b28b-e16b11188844"]]
+=> #<Campaign id: "e85b5297-02e5-4a66-b12b-fdb5b9a323a7", user_id: "4eb187de-f68e-46d3-8580-3fa3506c098c", business_type: nil, targeting: nil, state: "", zipcode: nil, radius: nil, gender: nil, age_min: nil, age_max: nil, ctct_subscription_list_id: "1041433910", ctct_subscription_list_name: nil, description: "We offer a variety of services from one-piece proj...", message: "From web banners to printed brochures, ads and med...", image_url: "https://scontent-lga3-1.xx.fbcdn.net/t31.0-8/13443...", created_at: "2016-06-21 14:43:09", updated_at: "2016-06-21 14:49:37", status: "fbaa_update_succeeded", name: "Smart advertising and cutting edge design for indu...", object_url: "", fbaa_id: "b8964c28-b69a-4ba3-b28b-e16b11188844", budget: 25000, website_url: "hammer-house.com", advertised_on_facebook: nil, expected_leads_per_month: nil, facebook_page_id: "1726524664303817", facebook_page_name: "Hammer House", duration: 30, placement: nil, call_to_action: "LEARN_MORE", action_url: "http://hammer-house.com/", privacy_url: "http://www.constantcontact.com/legal/privacy-state...", contact_info: ["", "EMAIL", "FIRST_NAME", "LAST_NAME", "PHONE"], custom_disclaimer: "", city: "", objective: 0>
+irb(main):002:0> ClaimFacebookPage.new(c.user).call
+  User Load (5.6ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "4eb187de-f68e-46d3-8580-3fa3506c098c"]]
+  User Load (5.6ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "4eb187de-f68e-46d3-8580-3fa3506c098c"]]
+  Authorization Load (3.4ms)  SELECT  "authorizations".* FROM "authorizations" WHERE "authorizations"."user_id" = $1 AND "authorizations"."provider" = $2 LIMIT 1  [["user_id", "4eb187de-f68e-46d3-8580-3fa3506c098c"], ["provider", "facebook"]]
+  Authorization Load (3.4ms)  SELECT  "authorizations".* FROM "authorizations" WHERE "authorizations"."user_id" = $1 AND "authorizations"."provider" = $2 LIMIT 1  [["user_id", "4eb187de-f68e-46d3-8580-3fa3506c098c"], ["provider", "facebook"]]
+getting token
+getting token
+  Authorization Load (2.5ms)  SELECT  "authorizations".* FROM "authorizations" WHERE "authorizations"."user_id" = $1 AND "authorizations"."provider" = $2 LIMIT 1  [["user_id", "4eb187de-f68e-46d3-8580-3fa3506c098c"], ["provider", "facebook"]]
+  Authorization Load (2.5ms)  SELECT  "authorizations".* FROM "authorizations" WHERE "authorizations"."user_id" = $1 AND "authorizations"."provider" = $2 LIMIT 1  [["user_id", "4eb187de-f68e-46d3-8580-3fa3506c098c"], ["provider", "facebook"]]
+=> {"success"=>true}
+irb(main):003:0> 
+
+
+Then republish on fbaa
+Get the ad Then
+PublishAd.new(ad).call

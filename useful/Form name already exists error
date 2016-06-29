@@ -1,0 +1,11 @@
+Form name already exists error
+
+this one:
+https://adsapi.io/admin/ads/f5e9674a-d389-43f0-aa91-9e562537cfe4
+
+verified that it wasn't a permissions thing by claiming the facebook page which then revealed this error.
+
+Go check it on BM, claim the page first!  (in this case for Ad_forms)
+
+Bug where uniqueness is now a requirement on ad_form name?  emailed Jay.
+

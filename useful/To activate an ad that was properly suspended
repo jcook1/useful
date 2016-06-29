@@ -1,0 +1,6 @@
+irb(main):010:0> ad = Ad.find("6dc6c6fb-84ba-4b81-bf07-41a8c664af16")
+=> #<Ad id: "6dc6c6fb-84ba-4b81-bf07-41a8c664af16", deprecated_name: nil, created_at: "2016-06-14 15:01:33", updated_at: "2016-06-14 17:37:26", radius: nil, publish_state: "canceled", ctct_campaign_id: nil, target_clicks: nil, target_impressions: nil, ctct_account_id: nil, reach_ratio: nil, spend_ratio: nil, ad_account_id: "d0dd79b4-add6-4225-81f7-49eda9e583e1", boost_activity_id: nil, geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "AdLauncher", client_id: "8d7962e6-f191-4dd5-8445-daf1e8e60e7d", objective: 1>
+irb(main):011:0> ad.ad_set.update(start_time: nil)
+=> true
+irb(main):012:0> ad.update(publish_state: "activation_pending")
+=> true
