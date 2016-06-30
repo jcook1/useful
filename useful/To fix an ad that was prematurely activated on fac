@@ -1,0 +1,26 @@
+To fix an ad that was prematurely activated on facebook
+
+Find the ad on facebook and pause it AT THE LOWEST LEVEL YOU CAN GET TO!
+
+Use FBAA/AdLauncher to edit it appropriately - this example was to change the duration.
+
+Republish it using AdLauncher.
+
+This is the ad in question:
+https://adsapi.io/admin/ads/6634f536-1f94-4f97-9f5a-2ad141ab5c70
+
+THAT Doesn't work?
+
+Activate it on FB, set the correct end date manually on the lowest level.  Activate it one level up...
+
+Set the ad to active in FBAA and correct the start_time to accurately reflect the end date.
+
+irb(main):006:0> ad = Ad.find("6634f536-1f94-4f97-9f5a-2ad141ab5c70")
+=> #<Ad id: "6634f536-1f94-4f97-9f5a-2ad141ab5c70", deprecated_name: nil, created_at: "2016-06-14 14:30:34", updated_at: "2016-06-30 03:19:21", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: nil, target_impressions: nil, ctct_account_id: nil, reach_ratio: nil, spend_ratio: nil, ad_account_id: "db91e4df-4d95-4217-b31d-1c67bd871c48", boost_activity_id: nil, geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "AdLauncher", client_id: "2890d21e-3f21-40b1-88c9-b1f2e1630f44", objective: 1>
+irb(main):007:0> ad.update(publish_state: "activated")
+=> true
+irb(main):008:0> ad.ad_set
+=> #<AdSet id: "68a531b9-4b9e-4851-81f9-2f3eed89e85d", facebook_id: "6053848447792", deprecated_name: nil, deprecated_campaign_status: nil, budget: 40000, start_time: nil, deprecated_ad_campaign_id: nil, created_at: "2016-06-14 14:30:34", updated_at: "2016-06-29 21:28:55", ad_id: "6634f536-1f94-4f97-9f5a-2ad141ab5c70", duration: 40, states: "TN", cities: "Clarksville", countries: "US", radius: 20, bid_type: nil, bid_info: nil, deleted_at: nil>
+irb(main):009:0> ad.ad_set.update(start_time: "2016-06-29 21:28:55")
+=> true
+irb(main):010:0> 
