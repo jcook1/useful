@@ -1,0 +1,165 @@
+Manually publishing a campaign from AdLauncher
+
+Use "update" instead if it already exists  (that is the error below)
+
+Last login: Wed Jun 29 09:08:46 on ttys000
+JCOOKMAC1:~ jcook$ heroku run rails c -a ad-launcher
+Running rails c on ⬢ ad-launcher... up, run.7887
+** [Honeybadger] Starting Honeybadger version 2.6.0 level=1 pid=3
+Loading production environment (Rails 4.2.6)
+irb(main):001:0> c = Campaign.find "18fc46ed-7fb3-4dd6-b530-ab4d2a4d180c"
+  Campaign Load (4.0ms)  SELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT 1  [["id", "18fc46ed-7fb3-4dd6-b530-ab4d2a4d180c"]]
+  Campaign Load (4.0ms)  SELECT  "campaigns".* FROM "campaigns" WHERE "campaigns"."id" = $1 LIMIT 1  [["id", "18fc46ed-7fb3-4dd6-b530-ab4d2a4d180c"]]
+=> #<Campaign id: "18fc46ed-7fb3-4dd6-b530-ab4d2a4d180c", user_id: "90f523b3-6c57-4e40-abf1-aa0e831fc6f7", business_type: nil, targeting: nil, state: "NH", zipcode: nil, radius: nil, gender: nil, age_min: nil, age_max: nil, ctct_subscription_list_id: "1525489230", ctct_subscription_list_name: nil, description: "20% off all Kuhl and Tasc clothing.", message: "Stay KUHL and in TASC this summer!", image_url: "https://mlsvc01-prod.s3.amazonaws.com/b253899f301/...", created_at: "2016-06-28 14:52:20", updated_at: "2016-07-01 13:02:41", status: "fbaa_create_failed", name: "We Know That You Don't Need an Excuse to Shop but ...", object_url: "", fbaa_id: "b9b7c47e-1aa4-4e48-b8a1-331ec7fb7206", budget: 25000, website_url: "http://www.simplybirkenstock.com/", advertised_on_facebook: nil, expected_leads_per_month: nil, facebook_page_id: "35026523035", facebook_page_name: "Simply Birkenstock", duration: 30, placement: nil, call_to_action: "LEARN_MORE", action_url: "http://www.simplybirkenstock.com/", privacy_url: "http://www.constantcontact.com/legal/privacy-state...", contact_info: ["", "EMAIL", "FIRST_NAME", "LAST_NAME"], custom_disclaimer: "", city: "", objective: 0, spend: 0, approved_at: nil, note: nil>
+irb(main):002:0> wrapper = FbaaWrapper.new(campaign)
+NameError: uninitialized constant FbaaWrapper
+	from (irb):2
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:110:in `start'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:9:in `start'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:68:in `console'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands.rb:17:in `<top (required)>'
+	from /app/bin/rails:4:in `require'
+	from /app/bin/rails:4:in `<main>'
+irb(main):003:0> wrapper = FbaaWrapper.new(c)
+NameError: uninitialized constant FbaaWrapper
+	from (irb):3
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:110:in `start'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:9:in `start'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:68:in `console'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands.rb:17:in `<top (required)>'
+	from /app/bin/rails:4:in `require'
+	from /app/bin/rails:4:in `<main>'
+irb(main):004:0> wrapper = Fbaa.new(c)
+NameError: uninitialized constant Fbaa
+	from (irb):4
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:110:in `start'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:9:in `start'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:68:in `console'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands.rb:17:in `<top (required)>'
+	from /app/bin/rails:4:in `require'
+	from /app/bin/rails:4:in `<main>'
+irb(main):005:0> wrapper = FbaaCreate.new(c)
+=> #<FbaaCreate:0x007fd22a479b50 @campaign=#<Campaign id: "18fc46ed-7fb3-4dd6-b530-ab4d2a4d180c", user_id: "90f523b3-6c57-4e40-abf1-aa0e831fc6f7", business_type: nil, targeting: nil, state: "NH", zipcode: nil, radius: nil, gender: nil, age_min: nil, age_max: nil, ctct_subscription_list_id: "1525489230", ctct_subscription_list_name: nil, description: "20% off all Kuhl and Tasc clothing.", message: "Stay KUHL and in TASC this summer!", image_url: "https://mlsvc01-prod.s3.amazonaws.com/b253899f301/...", created_at: "2016-06-28 14:52:20", updated_at: "2016-07-01 13:02:41", status: "fbaa_create_failed", name: "We Know That You Don't Need an Excuse to Shop but ...", object_url: "", fbaa_id: "b9b7c47e-1aa4-4e48-b8a1-331ec7fb7206", budget: 25000, website_url: "http://www.simplybirkenstock.com/", advertised_on_facebook: nil, expected_leads_per_month: nil, facebook_page_id: "35026523035", facebook_page_name: "Simply Birkenstock", duration: 30, placement: nil, call_to_action: "LEARN_MORE", action_url: "http://www.simplybirkenstock.com/", privacy_url: "http://www.constantcontact.com/legal/privacy-state...", contact_info: ["", "EMAIL", "FIRST_NAME", "LAST_NAME"], custom_disclaimer: "", city: "", objective: 0, spend: 0, approved_at: nil, note: nil>>
+irb(main):006:0> c.update status: "Sending to fbaa..."
+   (1.0ms)  BEGIN
+   (1.0ms)  BEGIN
+  SQL (1.3ms)  UPDATE "campaigns" SET "status" = $1, "updated_at" = $2 WHERE "campaigns"."id" = $3  [["status", "Sending to fbaa..."], ["updated_at", "2016-07-01 13:35:57.880313"], ["id", "18fc46ed-7fb3-4dd6-b530-ab4d2a4d180c"]]
+  SQL (1.3ms)  UPDATE "campaigns" SET "status" = $1, "updated_at" = $2 WHERE "campaigns"."id" = $3  [["status", "Sending to fbaa..."], ["updated_at", "2016-07-01 13:35:57.880313"], ["id", "18fc46ed-7fb3-4dd6-b530-ab4d2a4d180c"]]
+   (1.6ms)  COMMIT
+   (1.6ms)  COMMIT
+=> true
+irb(main):007:0> wrapper.create.create_ad
+NoMethodError: undefined method `create' for #<FbaaCreate:0x007fd22a479b50>
+	from (irb):7
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:110:in `start'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:9:in `start'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:68:in `console'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands.rb:17:in `<top (required)>'
+	from /app/bin/rails:4:in `require'
+	from /app/bin/rails:4:in `<main>'
+irb(main):008:0> wrapper
+=> #<FbaaCreate:0x007fd22a479b50 @campaign=#<Campaign id: "18fc46ed-7fb3-4dd6-b530-ab4d2a4d180c", user_id: "90f523b3-6c57-4e40-abf1-aa0e831fc6f7", business_type: nil, targeting: nil, state: "NH", zipcode: nil, radius: nil, gender: nil, age_min: nil, age_max: nil, ctct_subscription_list_id: "1525489230", ctct_subscription_list_name: nil, description: "20% off all Kuhl and Tasc clothing.", message: "Stay KUHL and in TASC this summer!", image_url: "https://mlsvc01-prod.s3.amazonaws.com/b253899f301/...", created_at: "2016-06-28 14:52:20", updated_at: "2016-07-01 13:35:57", status: "Sending to fbaa...", name: "We Know That You Don't Need an Excuse to Shop but ...", object_url: "", fbaa_id: "b9b7c47e-1aa4-4e48-b8a1-331ec7fb7206", budget: 25000, website_url: "http://www.simplybirkenstock.com/", advertised_on_facebook: nil, expected_leads_per_month: nil, facebook_page_id: "35026523035", facebook_page_name: "Simply Birkenstock", duration: 30, placement: nil, call_to_action: "LEARN_MORE", action_url: "http://www.simplybirkenstock.com/", privacy_url: "http://www.constantcontact.com/legal/privacy-state...", contact_info: ["", "EMAIL", "FIRST_NAME", "LAST_NAME"], custom_disclaimer: "", city: "", objective: 0, spend: 0, approved_at: nil, note: nil>>
+irb(main):009:0> wrapper.create_ad(c)
+NoMethodError: undefined method `create_ad' for #<FbaaCreate:0x007fd22a479b50>
+Did you mean?  created_ad
+	from (irb):9
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:110:in `start'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:9:in `start'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:68:in `console'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+	from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands.rb:17:in `<top (required)>'
+	from /app/bin/rails:4:in `require'
+	from /app/bin/rails:4:in `<main>'
+irb(main):010:0> c
+=> #<Campaign id: "18fc46ed-7fb3-4dd6-b530-ab4d2a4d180c", user_id: "90f523b3-6c57-4e40-abf1-aa0e831fc6f7", business_type: nil, targeting: nil, state: "NH", zipcode: nil, radius: nil, gender: nil, age_min: nil, age_max: nil, ctct_subscription_list_id: "1525489230", ctct_subscription_list_name: nil, description: "20% off all Kuhl and Tasc clothing.", message: "Stay KUHL and in TASC this summer!", image_url: "https://mlsvc01-prod.s3.amazonaws.com/b253899f301/...", created_at: "2016-06-28 14:52:20", updated_at: "2016-07-01 13:35:57", status: "Sending to fbaa...", name: "We Know That You Don't Need an Excuse to Shop but ...", object_url: "", fbaa_id: "b9b7c47e-1aa4-4e48-b8a1-331ec7fb7206", budget: 25000, website_url: "http://www.simplybirkenstock.com/", advertised_on_facebook: nil, expected_leads_per_month: nil, facebook_page_id: "35026523035", facebook_page_name: "Simply Birkenstock", duration: 30, placement: nil, call_to_action: "LEARN_MORE", action_url: "http://www.simplybirkenstock.com/", privacy_url: "http://www.constantcontact.com/legal/privacy-state...", contact_info: ["", "EMAIL", "FIRST_NAME", "LAST_NAME"], custom_disclaimer: "", city: "", objective: 0, spend: 0, approved_at: nil, note: nil>
+irb(main):011:0> wrapper
+=> #<FbaaCreate:0x007fd22a479b50 @campaign=#<Campaign id: "18fc46ed-7fb3-4dd6-b530-ab4d2a4d180c", user_id: "90f523b3-6c57-4e40-abf1-aa0e831fc6f7", business_type: nil, targeting: nil, state: "NH", zipcode: nil, radius: nil, gender: nil, age_min: nil, age_max: nil, ctct_subscription_list_id: "1525489230", ctct_subscription_list_name: nil, description: "20% off all Kuhl and Tasc clothing.", message: "Stay KUHL and in TASC this summer!", image_url: "https://mlsvc01-prod.s3.amazonaws.com/b253899f301/...", created_at: "2016-06-28 14:52:20", updated_at: "2016-07-01 13:35:57", status: "Sending to fbaa...", name: "We Know That You Don't Need an Excuse to Shop but ...", object_url: "", fbaa_id: "b9b7c47e-1aa4-4e48-b8a1-331ec7fb7206", budget: 25000, website_url: "http://www.simplybirkenstock.com/", advertised_on_facebook: nil, expected_leads_per_month: nil, facebook_page_id: "35026523035", facebook_page_name: "Simply Birkenstock", duration: 30, placement: nil, call_to_action: "LEARN_MORE", action_url: "http://www.simplybirkenstock.com/", privacy_url: "http://www.constantcontact.com/legal/privacy-state...", contact_info: ["", "EMAIL", "FIRST_NAME", "LAST_NAME"], custom_disclaimer: "", city: "", objective: 0, spend: 0, approved_at: nil, note: nil>>
+irb(main):012:0> wrapper.call
+  User Load (1.1ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "90f523b3-6c57-4e40-abf1-aa0e831fc6f7"]]
+  User Load (1.1ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "90f523b3-6c57-4e40-abf1-aa0e831fc6f7"]]
+Fbaa::Client - #request url = https://adsapi.io/api/v2/ads
+Fbaa::Client - #request url = https://adsapi.io/api/v2/ads
+RestClient::UnprocessableEntity
+RestClient::UnprocessableEntity
+422 Unprocessable Entity
+422 Unprocessable Entity
+/app/vendor/bundle/ruby/2.3.0/gems/rest-client-1.8.0/lib/restclient/abstract_response.rb:74:in `return!'
+/app/vendor/bundle/ruby/2.3.0/gems/rest-client-1.8.0/lib/restclient/request.rb:495:in `process_result'
+/app/vendor/bundle/ruby/2.3.0/gems/rest-client-1.8.0/lib/restclient/request.rb:421:in `block in transmit'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/net/http.rb:853:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/rest-client-1.8.0/lib/restclient/request.rb:413:in `transmit'
+/app/vendor/bundle/ruby/2.3.0/gems/rest-client-1.8.0/lib/restclient/request.rb:176:in `execute'
+/app/vendor/bundle/ruby/2.3.0/gems/fbaa_api-0.9.3/lib/fbaa_api/client.rb:51:in `request'
+/app/vendor/bundle/ruby/2.3.0/gems/fbaa_api-0.9.3/lib/fbaa_api/client.rb:9:in `post'
+/app/vendor/bundle/ruby/2.3.0/gems/fbaa_api-0.9.3/lib/fbaa_api/client.rb:21:in `create_ad'
+/app/app/services/fbaa_create.rb:22:in `created_ad'
+/app/app/services/fbaa_create.rb:5:in `call'
+(irb):12:in `irb_binding'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `eval'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/context.rb:380:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:489:in `block (2 levels) in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:623:in `signal_status'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:486:in `block in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:246:in `block (2 levels) in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `loop'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `block in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:485:in `eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:395:in `block in start'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:110:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:9:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:68:in `console'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands.rb:17:in `<top (required)>'
+/app/bin/rails:4:in `require'
+/app/bin/rails:4:in `<main>'
+/app/vendor/bundle/ruby/2.3.0/gems/rest-client-1.8.0/lib/restclient/abstract_response.rb:74:in `return!'
+/app/vendor/bundle/ruby/2.3.0/gems/rest-client-1.8.0/lib/restclient/request.rb:495:in `process_result'
+/app/vendor/bundle/ruby/2.3.0/gems/rest-client-1.8.0/lib/restclient/request.rb:421:in `block in transmit'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/net/http.rb:853:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/rest-client-1.8.0/lib/restclient/request.rb:413:in `transmit'
+/app/vendor/bundle/ruby/2.3.0/gems/rest-client-1.8.0/lib/restclient/request.rb:176:in `execute'
+/app/vendor/bundle/ruby/2.3.0/gems/fbaa_api-0.9.3/lib/fbaa_api/client.rb:51:in `request'
+/app/vendor/bundle/ruby/2.3.0/gems/fbaa_api-0.9.3/lib/fbaa_api/client.rb:9:in `post'
+/app/vendor/bundle/ruby/2.3.0/gems/fbaa_api-0.9.3/lib/fbaa_api/client.rb:21:in `create_ad'
+/app/app/services/fbaa_create.rb:22:in `created_ad'
+/app/app/services/fbaa_create.rb:5:in `call'
+(irb):12:in `irb_binding'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `eval'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/workspace.rb:87:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/context.rb:380:in `evaluate'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:489:in `block (2 levels) in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:623:in `signal_status'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:486:in `block in eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:246:in `block (2 levels) in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `loop'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:232:in `block in each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb/ruby-lex.rb:231:in `each_top_level_statement'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:485:in `eval_input'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:395:in `block in start'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `catch'
+/app/vendor/ruby-2.3.0/lib/ruby/2.3.0/irb.rb:394:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:110:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:9:in `start'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:68:in `console'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+/app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands.rb:17:in `<top (required)>'
+/app/bin/rails:4:in `require'
+/app/bin/rails:4:in `<main>'
+   (0.6ms)  BEGIN
+   (0.6ms)  BEGIN
+  SQL (0.8ms)  UPDATE "campaigns" SET "status" = $1, "updated_at" = $2 WHERE "campaigns"."id" = $3  [["status", "fbaa_create_failed"], ["updated_at", "2016-07-01 13:44:28.027042"], ["id", "18fc46ed-7fb3-4dd6-b530-ab4d2a4d180c"]]
+  SQL (0.8ms)  UPDATE "campaigns" SET "status" = $1, "updated_at" = $2 WHERE "campaigns"."id" = $3  [["status", "fbaa_create_failed"], ["updated_at", "2016-07-01 13:44:28.027042"], ["id", "18fc46ed-7fb3-4dd6-b530-ab4d2a4d180c"]]
+   (1.4ms)  COMMIT
+   (1.4ms)  COMMIT
+=> "Campaign publish failed for the following reasons: Client has already been taken"
+irb(main):013:0> wrapper = FbaaCreate.new(c)JCOOKMAC1:~ jcook$ 
