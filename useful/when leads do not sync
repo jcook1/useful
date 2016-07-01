@@ -1,0 +1,32 @@
+
+Possible Facebook IDs from Tiffany's method of inspecting the element to get the old Facebook IDs
+
+507770932744951
+861424843989645
+1251353884875353
+1274212745940389 leads!!!
+973690199367136
+460320994162999  leads!!!
+846971902078384  leads!!!
+
+
+
+KoalaWrapper.new(
+      facebook_id: 460320994162999,
+      endpoint: 'leads',
+      params: { limit: LEADS_LIMIT }
+    ).get
+
+
+
+    Current Facebook ID : 861424843989645
+
+    irb(main):073:0> ad.ad_form.facebook_id
+=> "861424843989645"
+irb(main):074:0> ad.ad_form.update(facebook_id: "1274212745940389")
+=> true
+
+GetLeadsForAdForm.new(ad).call
+
+try ad.reload if it doesn't let you update the ad_form.facebook_id
+

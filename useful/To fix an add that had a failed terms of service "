@@ -1,0 +1,57 @@
+To fix an add that had a failed terms of service "You still need to accept our Terms of Service"
+
+
+irb(main):009:0> ad
+=> #<Ad id: "86855399-90b6-40fc-af5a-09106108e5a9", deprecated_name: nil, created_at: "2016-06-29 19:12:27", updated_at: "2016-06-29 19:44:09", radius: nil, publish_state: "failed", ctct_campaign_id: nil, target_clicks: nil, target_impressions: nil, ctct_account_id: nil, reach_ratio: nil, spend_ratio: nil, ad_account_id: "f56f0513-5be5-4140-a343-6e108be9b0b2", boost_activity_id: nil, geotargeting: nil, click_through_rate: nil, disapproval_reason: nil, deleted_at: nil, client_name: "AdLauncher", client_id: "e0563ff9-21e1-4f35-8c3a-72d6daabc046", objective: 1>
+irb(main):010:0> ad.ad_account
+=> #<AdAccount id: "f56f0513-5be5-4140-a343-6e108be9b0b2", facebook_id: "act_721559317982531", tos_accepted: true, user_provisioned: true, facebook_page_name: "Osseo Gun Club & Pro Shop", facebook_page_id: "603735616315196", ctct_account_id: nil, api_consumer_id: "6e5e08a6-773a-4f8b-9b0b-b99efbed1744", client_account_id: "9020246f-9212-4a6e-ad4e-414339bd3396", legal_id: "592951044218698">
+
+Noticed that the tos_accepted value was true, meaning it had somehow been previously accepted so let's reset it to false and republish - calling that again to be properly accepted.
+
+irb(main):011:0> ad.ad_account.update(tos_accepted: false)
+=> true
+irb(main):012:0> PublishAd.new(ad).call
+BG_PUBLISH: PublishAd#call ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+BG_PUBLISH: PublishAd#call ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+Facebook::FbAdAccount#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+Facebook::FbAdAccount#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+publish conditions not met
+publish conditions not met
+Facebook::TermsOfService#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+Facebook::TermsOfService#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+publish conditions met
+publish conditions met
+Facebook::UserPermission#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+Facebook::UserPermission#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+publish conditions not met
+publish conditions not met
+Facebook::LegalContent#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+Facebook::LegalContent#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+publish conditions not met
+publish conditions not met
+Facebook::CustomAudience#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+Facebook::CustomAudience#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+publish conditions not met
+publish conditions not met
+Facebook::FbAdCampaign#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+Facebook::FbAdCampaign#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+publish conditions not met
+publish conditions not met
+Facebook::FbAdSet#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+Facebook::FbAdSet#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+publish conditions met
+publish conditions met
+Facebook::FbAdForm#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+Facebook::FbAdForm#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+publish conditions met
+publish conditions met
+Facebook::FbAdCreative#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+Facebook::FbAdCreative#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+publish conditions met
+publish conditions met
+Facebook::FbAdGroup#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+Facebook::FbAdGroup#publish ad_id: 86855399-90b6-40fc-af5a-09106108e5a9
+publish conditions met
+publish conditions met
+=> true
+irb(main):013:0> 

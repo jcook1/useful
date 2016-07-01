@@ -1,0 +1,15 @@
+GetLeadsForAdForm.new(ad).call
+
+Try this to see if you can get the leads from the facebookid
+
+from get_leads_for_ad_form.rb
+LEADS_LIMIT = 1000
+
+KoalaWrapper.new(
+      facebook_id: 6049753267802, <- get this from ad.ad_group.facebook_id
+      endpoint: 'leads',
+      params: { limit: LEADS_LIMIT }
+    ).get
+
+To get the leads from the ad level.
+

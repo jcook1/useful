@@ -1,0 +1,9 @@
+To destory an authorization
+
+Authorization.find_by(provider: 'facebook', user_id: id).destroy!
+
+randallbedwell@gmail.com
+
+User.find_by!(email: email).authorizations.find_by!(provider: 'facebook').destroy!
+
+User.find_by!(email: "randallbedwell@gmail.com").authorizations.find_by!(provider: 'facebook').destroy!

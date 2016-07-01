@@ -1,0 +1,13 @@
+🐓  heroku run rails c -a fbaa
+Running rails c on ⬢ fbaa... up, run.6834
+** [Honeybadger] Starting Honeybadger version 2.6.0 level=1 pid=3
+Loading production environment (Rails 4.2.5.1)
+irb(main):001:0> ad = Ad.find("c696c6e0-c9d6-427f-8ac9-1d552eae2d57")
+=> #<Ad id: "c696c6e0-c9d6-427f-8ac9-1d552eae2d57", deprecated_name: nil, created_at: "2016-05-16 14:00:02", updated_at: "2016-05-20 13:30:41", radius: nil, publish_state: "canceled", ctct_campaign_id: nil, target_clicks: 100, target_impressions: 10000, ctct_account_id: "1119736476361", reach_ratio: #<BigDecimal:7f789219e440,'0.7109E2',18(27)>, spend_ratio: #<BigDecimal:7f789219d6d0,'0.8495E2',18(27)>, ad_account_id: "9bad371e-8a37-4d14-92c7-1d443383b91e", boost_activity_id: "f0837b74-b625-4222-b9ab-0cdf25468ce8", geotargeting: nil, click_through_rate: #<BigDecimal:7f789219cff0,'0.107E1',18(27)>, disapproval_reason: nil, deleted_at: nil, client_name: "Boost", client_id: "80f8a724-9ea0-447a-b8e0-ab82b52cecc9", objective: 0>
+irb(main):002:0> ad.publish_state
+=> "canceled"
+irb(main):003:0> ad.update(publish_state: "activated")
+=> true
+irb(main):004:0> ad.publish_state
+=> "activated"
+irb(main):005:0> 

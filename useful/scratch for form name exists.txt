@@ -1,0 +1,24 @@
+This was part of the investigation into the form name exists error.
+
+ENDPOINT = 'leadgen_forms'.freeze
+  LOCALE = 'EN_US'.freeze
+
+params = {
+      token_type: :page,
+      facebook_id: ad.ad_account.facebook_page_id,
+      endpoint: ENDPOINT,
+      params: {
+        legal_content_id: ad.ad_account.legal_id,
+        follow_up_action_url: ad.ad_form.action_url,
+        locale: LOCALE,
+        name: Time.now.to_s,
+        questions: contact_info.to_json,
+        custom_disclaimer: ad.ad_form.custom_disclaimer
+      }
+    }
+
+    response = KoalaWrapper.new(params).create_or_update
+
+    contact_info = ad.ad_form.contact_info.map do |field|
+      { type: field }
+    end
