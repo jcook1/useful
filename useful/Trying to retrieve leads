@@ -1,0 +1,76 @@
+Trying to retrieve leads
+
+
+🐓  heroku run rails c -a fbaa
+Running rails c on ⬢ fbaa... up, run.8841
+** [Honeybadger] Starting Honeybadger version 2.6.0 level=1 pid=3
+Loading production environment (Rails 4.2.6)
+irb(main):001:0> ad - Ad.find "60d97695-a905-4ad9-9768-1766009f8e09"
+SyntaxError: (irb):1: syntax error, unexpected tSTRING_BEG, expecting end-of-input
+ad - Ad.find "60d97695-a905-4ad9-9768-1766009f8e09"
+              ^
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:110:in `start'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:9:in `start'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:68:in `console'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands.rb:17:in `<top (required)>'
+  from /app/bin/rails:4:in `require'
+  from /app/bin/rails:4:in `<main>'
+irb(main):002:0> ad = Ad.find "60d97695-a905-4ad9-9768-1766009f8e09"
+=> #<Ad id: "60d97695-a905-4ad9-9768-1766009f8e09", deprecated_name: nil, created_at: "2016-06-20 19:41:17", updated_at: "2016-07-05 19:47:11", radius: nil, publish_state: "activated", ctct_campaign_id: nil, target_clicks: nil, target_impressions: nil, ctct_account_id: nil, reach_ratio: #<BigDecimal:7f2bfd51e098,'0.0',9(18)>, spend_ratio: #<BigDecimal:7f2bfd51df58,'0.5803E2',18(27)>, ad_account_id: "334d34a2-e3ee-4ab1-a6be-dd51a210fbba", boost_activity_id: nil, geotargeting: nil, click_through_rate: #<BigDecimal:7f2bfd51dc10,'0.283E1',18(27)>, disapproval_reason: nil, deleted_at: nil, client_name: "AdLauncher", client_id: "b7a06dfe-a3e8-487b-bcc1-91b50452617b", objective: 1>
+irb(main):003:0> ad.ad_form
+=> #<AdForm id: "f8d1d54d-fded-4837-94a5-786bb8f5fb8d", action_url: "marshahudson.com", privacy_url: "http://www.constantcontact.com/legal/privacy-state...", name: "What Do Your Dreams Mean?", qualifiers: nil, contact_info: ["EMAIL", "FIRST_NAME", "LAST_NAME", "PHONE"], custom_disclaimer: nil, facebook_id: "988841057897867", ad_id: "60d97695-a905-4ad9-9768-1766009f8e09", deleted_at: nil, created_at: "2016-06-20 19:41:17", updated_at: "2016-06-20 19:41:34">
+irb(main):004:0> GetLeadsForAdForm.new(ad).call
+=> nil
+irb(main):005:0> KoalaWrapper.new(
+irb(main):006:1*     facebook_id: "988841057897867",
+irb(main):007:1*     endpoint: 'leads',
+irb(main):008:1*     params: { limit: 1000 }
+irb(main):009:1>   ).get
+=> []
+irb(main):010:0> leads = GetLeadsForAdForm.new(ad).call
+=> nil
+irb(main):011:0> leads.errors.full_messages
+NoMethodError: undefined method `errors' for nil:NilClass
+  from (irb):11
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:110:in `start'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/console.rb:9:in `start'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:68:in `console'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+  from /app/vendor/bundle/ruby/2.3.0/gems/railties-4.2.6/lib/rails/commands.rb:17:in `<top (required)>'
+  from /app/bin/rails:4:in `require'
+  from /app/bin/rails:4:in `<main>'
+irb(main):012:0> GetLeadsForAdForm.new(ad).call
+=> nil
+irb(main):013:0> ad.ad_form
+=> #<AdForm id: "f8d1d54d-fded-4837-94a5-786bb8f5fb8d", action_url: "marshahudson.com", privacy_url: "http://www.constantcontact.com/legal/privacy-state...", name: "What Do Your Dreams Mean?", qualifiers: nil, contact_info: ["EMAIL", "FIRST_NAME", "LAST_NAME", "PHONE"], custom_disclaimer: nil, facebook_id: "988841057897867", ad_id: "60d97695-a905-4ad9-9768-1766009f8e09", deleted_at: nil, created_at: "2016-06-20 19:41:17", updated_at: "2016-06-20 19:41:34">
+irb(main):014:0> KoalaWrapper.new(
+irb(main):015:1*     facebook_id: "988841057897867",
+irb(main):016:1*     endpoint: 'leads',
+irb(main):017:1*     params: { limit: 1000 }
+irb(main):018:1>   ).get
+=> []
+irb(main):019:0> ad.ad_creative
+=> #<AdCreative id: "b90895d8-41ca-4d63-a8ee-4b8ca3cdc3bf", facebook_id: "6043779177199", deprecated_title: nil, deprecated_body: nil, object_url: "marshahudson.com", ad_group_id: nil, created_at: "2016-06-20 19:41:17", updated_at: "2016-06-20 19:41:37", ad_id: "60d97695-a905-4ad9-9768-1766009f8e09", deprecated_caption: nil, image_url: "http://www.marshahudson.com.php5-22.dfw1-1.website...", message: "Groups are limited so don't miss your chance to re...", name: "What Do Your Dreams Mean?", description: "Join this group to release your creativity, increa...", page_post_id: nil, deleted_at: nil, cta_type: "SIGN_UP">
+irb(main):020:0> ad.ad_form
+=> #<AdForm id: "f8d1d54d-fded-4837-94a5-786bb8f5fb8d", action_url: "marshahudson.com", privacy_url: "http://www.constantcontact.com/legal/privacy-state...", name: "What Do Your Dreams Mean?", qualifiers: nil, contact_info: ["EMAIL", "FIRST_NAME", "LAST_NAME", "PHONE"], custom_disclaimer: nil, facebook_id: "988841057897867", ad_id: "60d97695-a905-4ad9-9768-1766009f8e09", deleted_at: nil, created_at: "2016-06-20 19:41:17", updated_at: "2016-06-20 19:41:34">
+irb(main):021:0> ad.ad_account
+=> #<AdAccount id: "334d34a2-e3ee-4ab1-a6be-dd51a210fbba", facebook_id: "act_718183218320141", tos_accepted: true, user_provisioned: true, facebook_page_name: "Oneiros Dream work", facebook_page_id: "455793594580033", ctct_account_id: nil, api_consumer_id: "6e5e08a6-773a-4f8b-9b0b-b99efbed1744", client_account_id: "16c368e5-a201-4a24-ba17-8b8af0389b6b", legal_id: "262600890765934">
+irb(main):022:0> KoalaWrapper.new(
+irb(main):023:1*     facebook_id: "455793594580033",
+irb(main):024:1*     endpoint: 'leadgen_forms',
+irb(main):025:1*     params: { }
+irb(main):026:1>   ).get
+=> [{"id"=>"988841057897867", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=988841057897867&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"What Do Your Dreams Mean?", "page_id"=>"455793594580033"}]
+irb(main):027:0> ad.ad_form
+=> #<AdForm id: "f8d1d54d-fded-4837-94a5-786bb8f5fb8d", action_url: "marshahudson.com", privacy_url: "http://www.constantcontact.com/legal/privacy-state...", name: "What Do Your Dreams Mean?", qualifiers: nil, contact_info: ["EMAIL", "FIRST_NAME", "LAST_NAME", "PHONE"], custom_disclaimer: nil, facebook_id: "988841057897867", ad_id: "60d97695-a905-4ad9-9768-1766009f8e09", deleted_at: nil, created_at: "2016-06-20 19:41:17", updated_at: "2016-06-20 19:41:34">
+irb(main):028:0> KoalaWrapper.new(
+irb(main):029:1*     facebook_id: "988841057897867",
+irb(main):030:1*     endpoint: 'leads',
+irb(main):031:1*     params: { limit: 1000 }
+irb(main):032:1>   ).get
+=> []
+irb(main):033:0> ad.ad_report
+=> #<AdReport id: "1bee6db4-7e6f-4982-b4c5-30648bf30144", ad_id: "60d97695-a905-4ad9-9768-1766009f8e09", impressions: 2372, reach: 1967, spend: 7353, total_actions: 44, clicks: 66, unique_clicks: 53, start_date: "2016-06-20", end_date: "2016-07-06", created_at: "2016-06-20 19:41:17", updated_at: "2016-07-05 21:17:17", deleted_at: nil, lead_count: 5>
+irb(main):034:0> 18:18:15 2.3.0 (add-timestamp-to-adform) facebook-ads-adapter
+🐓 

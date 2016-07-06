@@ -1,0 +1,120 @@
+//to get all the leads
+
+check to see what is there...
+Use the ad_form.facebook_id
+
+KoalaWrapper.new(
+    facebook_id: "1600075253636138",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+
+now get all the ad_forms to see what is missing...
+
+ad.ad_account
+=> #<AdAccount id: "8a18ff32-a618-4e9b-949e-5c174cd9dd81", facebook_id: "act_706331939505269", tos_accepted: true, user_provisioned: true, facebook_page_name: "Vocis LLc", facebook_page_id: "143281019062528", ctct_account_id: nil, api_consumer_id: "6e5e08a6-773a-4f8b-9b0b-b99efbed1744", client_account_id: "aa848307-97e9-4830-840c-2adf06f7b645", legal_id: "239130303138090">
+
+Use the facebook_page_id:
+
+// to get the ad_forms
+  KoalaWrapper.new(
+     facebook_id: "143281019062528",
+     endpoint: 'leadgen_forms',
+     params: { }
+   ).get
+
+
+Looks like there were 5 ad_forms
+
+ORIGINAL ONE!
+
+  [{"id"=>"1600075253636138", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=1600075253636138&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"Save valuable time with our end-to-end medical billing services", "page_id"=>"143281019062528"}, 
+
+KoalaWrapper.new(
+    facebook_id: "1600075253636138",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+  => [{"created_time"=>"2016-06-19T20:18:36+0000", "id"=>"1601292900181040", "field_data"=>[{"name"=>"email", "values"=>["oatblanton@aol.com"]}, {"name"=>"full_name", "values"=>["Annette Todd Blanton"]}]}]
+
+
+
+NEED TO USE THIS ONE!
+  {"id"=>"1031124406965238", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=1031124406965238&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"1Save valuable time with our end-to-end medical billing services", "page_id"=>"143281019062528"}, 
+
+KoalaWrapper.new(
+    facebook_id: "1031124406965238",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+  => [{"created_time"=>"2016-06-14T05:46:28+0000", "id"=>"1035785366499142", "field_data"=>[{"name"=>"last_name", "values"=>["Stephens Gagliardi"]}, {"name"=>"email", "values"=>["donnagag1961@yahoo.com"]}, {"name"=>"first_name", "values"=>["Donna"]}]}]
+
+
+
+SKIP!
+  {"id"=>"800318306734613", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=800318306734613&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"Save valuable time with our end-to-end medical billing services2", "page_id"=>"143281019062528"}, 
+
+KoalaWrapper.new(
+    facebook_id: "800318306734613",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+=> []
+
+
+SKIP!
+  {"id"=>"1715706078667780", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=1715706078667780&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"Save valuable time with our end-to-end medical billing services1", "page_id"=>"143281019062528"}, 
+
+KoalaWrapper.new(
+    facebook_id: "1715706078667780",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+=> []
+
+
+
+DO THIS ONE!!!
+  {"id"=>"1688892421333120", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=1688892421333120&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"Save valuable time with our end-to-end medical billing services", "page_id"=>"143281019062528"}]
+
+KoalaWrapper.new(
+    facebook_id: "1688892421333120",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+  => [{"created_time"=>"2016-06-20T18:16:37+0000", "id"=>"1700162960206066", "field_data"=>[{"name"=>"email", "values"=>["bubbanine2003@yahoo.com"]}, {"name"=>"full_name", "values"=>["Raymond L. Summers Jr"]}]}, {"created_time"=>"2016-06-14T01:09:12+0000", "id"=>"1697599043795791", "field_data"=>[{"name"=>"full_name", "values"=>["Leland Green"]}, {"name"=>"email", "values"=>["lelandgreen@greenfarms-ky.com"]}]}, {"created_time"=>"2016-06-11T22:00:25+0000", "id"=>"1696829587206070", "field_data"=>[{"name"=>"email", "values"=>["klj48@galaxycable.net"]}, {"name"=>"full_name", "values"=>["Kenneth Jones"]}]}, {"created_time"=>"2016-06-11T17:50:01+0000", "id"=>"1696778447211184", "field_data"=>[{"name"=>"email", "values"=>["jamesengland05@yahoo.com"]}, {"name"=>"full_name", "values"=>["James England"]}]}, {"created_time"=>"2016-06-11T13:26:47+0000", "id"=>"1696693347219694", "field_data"=>[{"name"=>"email", "values"=>["cbridenb89@aol.com"]}, {"name"=>"full_name", "values"=>["Coni Bridenbaugh"]}]}, {"created_time"=>"2016-06-09T01:49:37+0000", "id"=>"1695711330651229", "field_data"=>[{"name"=>"email", "values"=>["jeremyhead39@yahoo.com"]}, {"name"=>"full_name", "values"=>["Jeremy Head"]}]}, {"created_time"=>"2016-06-08T22:19:37+0000", "id"=>"1695651353990560", "field_data"=>[{"name"=>"email", "values"=>["danarhubbard@yahoo.com"]}, {"name"=>"full_name", "values"=>["Dana Rider Hubbard"]}]}, {"created_time"=>"2016-06-07T02:26:19+0000", "id"=>"1694881130734249", "field_data"=>[{"name"=>"email", "values"=>["kyfrenchmanjr28@gmail.com"]}, {"name"=>"full_name", "values"=>["Jeff Quebedeaux"]}]}, {"created_time"=>"2016-06-01T19:46:01+0000", "id"=>"1692621547626874", "field_data"=>[{"name"=>"email", "values"=>["kaden110413@gmail.com"]}, {"name"=>"full_name", "values"=>["Shelby Nash"]}]}, {"created_time"=>"2016-05-31T20:12:29+0000", "id"=>"1692252060997156", "field_data"=>[{"name"=>"full_name", "values"=>["Ashley John Isabella Jarvis"]}, {"name"=>"email", "values"=>["ashley.cole123450@yahoo.com"]}]}, {"created_time"=>"2016-05-30T23:42:16+0000", "id"=>"1691773064378389", "field_data"=>[{"name"=>"email", "values"=>["alicewages4@gmail.com"]}, {"name"=>"full_name", "values"=>["Alice Wages"]}]}, {"created_time"=>"2016-05-28T03:41:25+0000", "id"=>"1690653461157016", "field_data"=>[{"name"=>"email", "values"=>["urlady420br@gmail.com"]}, {"name"=>"full_name", "values"=>["Sissy Ronda"]}]}, {"created_time"=>"2016-05-27T23:29:19+0000", "id"=>"1690591057829923", "field_data"=>[{"name"=>"email", "values"=>["amber_luvs_preston@hotmail.com"]}, {"name"=>"full_name", "values"=>["Amber Lynn"]}]}, {"created_time"=>"2016-05-27T05:20:20+0000", "id"=>"1690225727866456", "field_data"=>[{"name"=>"email", "values"=>["geedana11@gmail.com"]}, {"name"=>"full_name", "values"=>["Dana Gee"]}]}, {"created_time"=>"2016-05-26T21:02:16+0000", "id"=>"1690127324542963", "field_data"=>[{"name"=>"email", "values"=>["sueknight117@yahoo.com"]}, {"name"=>"full_name", "values"=>["Sue Knight"]}]}]
+
+  So I gotta set the ad.ad_form.facebook_id with each of these that have leads...
+
+  ad.ad_form.update facebook_id: "1031124406965238"
+
+irb(main):059:0> ad.ad_form.update facebook_id: "1031124406965238"
+=> true
+irb(main):060:0> GetLeadsForAdForm.new(ad).call
+=> nil
+
+Guess this one was already synced?
+
+Try the last one:
+
+ad.ad_form.update facebook_id: "1688892421333120"
+
+irb(main):061:0> ad.ad_form.update facebook_id: "1688892421333120"
+=> true
+irb(main):062:0> GetLeadsForAdForm.new(ad).call
+Enqueued PostAdLeadsToClientJob (Job ID: eccb9d08-2d52-4fbf-bdf4-f66e52db23c5) to Sidekiq(default) with arguments: "8f59e79d-5f5a-466c-8be1-ea69775d0ef5", [{:id=>"1700162960206066", :fields=>[{"name"=>"email", "values"=>["bubbanine2003@yahoo.com"]}, {"name"=>"full_name", "values"=>["Raymond L. Summers Jr"]}]}, {:id=>"1697599043795791", :fields=>[{"name"=>"full_name", "values"=>["Leland Green"]}, {"name"=>"email", "values"=>["lelandgreen@greenfarms-ky.com"]}]}, {:id=>"1696829587206070", :fields=>[{"name"=>"email", "values"=>["klj48@galaxycable.net"]}, {"name"=>"full_name", "values"=>["Kenneth Jones"]}]}, {:id=>"1696778447211184", :fields=>[{"name"=>"email", "values"=>["jamesengland05@yahoo.com"]}, {"name"=>"full_name", "values"=>["James England"]}]}, {:id=>"1696693347219694", :fields=>[{"name"=>"email", "values"=>["cbridenb89@aol.com"]}, {"name"=>"full_name", "values"=>["Coni Bridenbaugh"]}]}, {:id=>"1695711330651229", :fields=>[{"name"=>"email", "values"=>["jeremyhead39@yahoo.com"]}, {"name"=>"full_name", "values"=>["Jeremy Head"]}]}, {:id=>"1695651353990560", :fields=>[{"name"=>"email", "values"=>["danarhubbard@yahoo.com"]}, {"name"=>"full_name", "values"=>["Dana Rider Hubbard"]}]}, {:id=>"1694881130734249", :fields=>[{"name"=>"email", "values"=>["kyfrenchmanjr28@gmail.com"]}, {"name"=>"full_name", "values"=>["Jeff Quebedeaux"]}]}]
+[ActiveJob] Enqueued PostAdLeadsToClientJob (Job ID: eccb9d08-2d52-4fbf-bdf4-f66e52db23c5) to Sidekiq(default) with arguments: "8f59e79d-5f5a-466c-8be1-ea69775d0ef5", [{:id=>"1700162960206066", :fields=>[{"name"=>"email", "values"=>["bubbanine2003@yahoo.com"]}, {"name"=>"full_name", "values"=>["Raymond L. Summers Jr"]}]}, {:id=>"1697599043795791", :fields=>[{"name"=>"full_name", "values"=>["Leland Green"]}, {"name"=>"email", "values"=>["lelandgreen@greenfarms-ky.com"]}]}, {:id=>"1696829587206070", :fields=>[{"name"=>"email", "values"=>["klj48@galaxycable.net"]}, {"name"=>"full_name", "values"=>["Kenneth Jones"]}]}, {:id=>"1696778447211184", :fields=>[{"name"=>"email", "values"=>["jamesengland05@yahoo.com"]}, {"name"=>"full_name", "values"=>["James England"]}]}, {:id=>"1696693347219694", :fields=>[{"name"=>"email", "values"=>["cbridenb89@aol.com"]}, {"name"=>"full_name", "values"=>["Coni Bridenbaugh"]}]}, {:id=>"1695711330651229", :fields=>[{"name"=>"email", "values"=>["jeremyhead39@yahoo.com"]}, {"name"=>"full_name", "values"=>["Jeremy Head"]}]}, {:id=>"1695651353990560", :fields=>[{"name"=>"email", "values"=>["danarhubbard@yahoo.com"]}, {"name"=>"full_name", "values"=>["Dana Rider Hubbard"]}]}, {:id=>"1694881130734249", :fields=>[{"name"=>"email", "values"=>["kyfrenchmanjr28@gmail.com"]}, {"name"=>"full_name", "values"=>["Jeff Quebedeaux"]}]}]
+=> #<PostAdLeadsToClientJob:0x007efebdd06638 @arguments=["8f59e79d-5f5a-466c-8be1-ea69775d0ef5", [{:id=>"1700162960206066", :fields=>[{"name"=>"email", "values"=>["bubbanine2003@yahoo.com"]}, {"name"=>"full_name", "values"=>["Raymond L. Summers Jr"]}]}, {:id=>"1697599043795791", :fields=>[{"name"=>"full_name", "values"=>["Leland Green"]}, {"name"=>"email", "values"=>["lelandgreen@greenfarms-ky.com"]}]}, {:id=>"1696829587206070", :fields=>[{"name"=>"email", "values"=>["klj48@galaxycable.net"]}, {"name"=>"full_name", "values"=>["Kenneth Jones"]}]}, {:id=>"1696778447211184", :fields=>[{"name"=>"email", "values"=>["jamesengland05@yahoo.com"]}, {"name"=>"full_name", "values"=>["James England"]}]}, {:id=>"1696693347219694", :fields=>[{"name"=>"email", "values"=>["cbridenb89@aol.com"]}, {"name"=>"full_name", "values"=>["Coni Bridenbaugh"]}]}, {:id=>"1695711330651229", :fields=>[{"name"=>"email", "values"=>["jeremyhead39@yahoo.com"]}, {"name"=>"full_name", "values"=>["Jeremy Head"]}]}, {:id=>"1695651353990560", :fields=>[{"name"=>"email", "values"=>["danarhubbard@yahoo.com"]}, {"name"=>"full_name", "values"=>["Dana Rider Hubbard"]}]}, {:id=>"1694881130734249", :fields=>[{"name"=>"email", "values"=>["kyfrenchmanjr28@gmail.com"]}, {"name"=>"full_name", "values"=>["Jeff Quebedeaux"]}]}]], @job_id="eccb9d08-2d52-4fbf-bdf4-f66e52db23c5", @queue_name="default">
+
+That worked!
+
+Now reset it back to the original...
+
+ad.ad_form.update facebook_id: "1600075253636138"
+

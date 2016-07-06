@@ -1,0 +1,53 @@
+To get the configs from Heroku (including tokens)
+
+heroku config -a fbaa
+=== fbaa Config Vars
+DATABASE_URL:                 postgres://u152iq3pt696hr:pd8n6cqmche8tj7k8j8t3bunuc9@ec2-54-163-225-24.compute-1.amazonaws.com:6292/d8nct2u8kp2683
+DB_POOL:                      10
+HEROKU_POSTGRESQL_MAROON_URL: postgres://u152iq3pt696hr:pd8n6cqmche8tj7k8j8t3bunuc9@ec2-75-101-162-176.compute-1.amazonaws.com:5622/d8nct2u8kp2683
+HONEYBADGER_API_KEY:          6d0fa870
+MAILTRAP_API_TOKEN:           015951b81e643f7f3f532eeb085982d4
+MAX_THREADS:                  5
+NEW_RELIC_APP_NAME:           FBAA Production
+PROXIMO_URL:                  http://proxy:84680c404b02-49a9-bd0e-3998ee2d1125@proxy-54-83-52-155.proximo.io
+RAILS_ENV:                    production
+REDISCLOUD_URL:               redis://rediscloud:zs5YKmulwHITvtCt@pub-redis-14226.us-east-1-3.2.ec2.garantiadata.com:14226
+REDISTOGO_URL:                redis://redistogo:98bcd1ef6099c58d7cfde2e1d3ac074e@clingfish.redistogo.com:9384/
+SPARKPOST_API_KEY:            b45545bcf5a56d8168a247bf99f21089b5a964aa
+SPARKPOST_API_URL:            https://api.sparkpost.com/api/v1
+SPARKPOST_SANDBOX_DOMAIN:     sparkpostbox.com
+SPARKPOST_SMTP_HOST:          smtp.sparkpostmail.com
+SPARKPOST_SMTP_PASSWORD:      b45545bcf5a56d8168a247bf99f21089b5a964aa
+SPARKPOST_SMTP_PORT:          587
+SPARKPOST_SMTP_USERNAME:      SMTP_Injection
+TERM_CHILD:                   1
+TZ:                           America/New_York
+WEB_CONCURRENCY:              2
+ad_launcher_url:              https://adlauncher.io/
+audience_tos_id:              206760949512025
+aws_access_key_id:            AKIAJWMVDAKZBKUZHVBA
+aws_s3_bucket:                das-fbaa
+aws_secret_access_key:        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
+base_domain:                  http://adsapi.io
+boost_api_token:              CREb+Ds~slj@N9M1BFTe
+boost_api_version:            v2
+boost_base_url:               https://boost.constantcontact.com
+campaign_base_url:            https://campaignapi.roving.com/campaignapi
+config_set:                   true
+contacts_base_url:            https://contacts-service.roving.com/contacts-service
+email_domain:                 http://adsapi.io
+environment:                  prod
+facebook_admin_token:         CAADHlK0wsssBAPp4KmzV2h1DGyVLgBb5Mrx8f43s589Y7sm2k9ZCjUnkhVYZAPo59nzbJHPlppwOYPB1cVhFqovMhw01xIdu4N4RmoyFxgFvXG5whUSLmbKrOiY7oN8cEX5QUNFWD36ZAo6EddPNE9JjEjT9Vzjx2ENugsLJovit5fSCO1Pne1h0PYd2cbkPhY9ZAeZAVUAZDZD
+facebook_app_id:              219441374737099
+facebook_app_secret:          5043b5b874f241f65bd2b0bb014cbab2
+facebook_auth_token:          CAADHlK0wsssBAKdLi0aHhxpRUll8j3d9s0g4nnEunJrDjYji3QPXt9SjTKH42wanbXIpjPVQ2YMPxrbkh67lUsyx1DpZBUTs8dIqbZC01c5bM1Td2fx1mDiDjlA0cdCoZCpHiWuklZCXfKxSZCnmNuNtaLsUcU9C4VZChW1UEZCOOsxRMIn9vdtia3hmZC0TR8v9vZBvdasCeNAZDZD
+facebook_business_id:         446744345464031
+facebook_user_id:             100005288681330
+from_email:                   no-reply@adsapi.io
+hipchat_api_key:              hgkfTcL4c5AihpqBqyp8cjIQoeRfkMBjfldFCrJh
+honeybadger_api_key:          3f59daa4
+media_ops_email:              mediaops@constantcontact.com
+secret_key_base:              6f36d737c42470239bb0aa3100c42532c4534cd03cf4f6211152bef3de0dc45126a5030bbfab3ab94c9a787a5cc35b3300f32fb41dc8ed1627548156d87cd8a1
+sema_media:                   3ae47116afd18eb95745fea793d35905
+tracking_base_url:            https://trackingsvc.roving.com/v1/tracking
+website_tos_id:               215449065224656
