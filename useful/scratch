@@ -1,0 +1,173 @@
+//to get all the leads
+
+check to see what is there...
+Use the ad_form.facebook_id
+
+KoalaWrapper.new(
+    facebook_id: "1102337546500907",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+
+now get all the ad_forms to see what is missing...
+
+ad.ad_account
+=> #<AdAccount id: "8a18ff32-a618-4e9b-949e-5c174cd9dd81", facebook_id: "act_706331939505269", tos_accepted: true, user_provisioned: true, facebook_page_name: "Vocis LLc", facebook_page_id: "143281019062528", ctct_account_id: nil, api_consumer_id: "6e5e08a6-773a-4f8b-9b0b-b99efbed1744", client_account_id: "aa848307-97e9-4830-840c-2adf06f7b645", legal_id: "239130303138090">
+
+Use the facebook_page_id:
+
+// to get the ad_forms
+  KoalaWrapper.new(
+     facebook_id: "261812373855823",
+     endpoint: 'leadgen_forms',
+     params: { }
+   ).get
+
+
+Looks like there were 4 ad_forms
+
+[{"id"=>"1102337546500907", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=1102337546500907&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"2016-07-27 11:56:59 -0400", "page_id"=>"261812373855823"}, 
+
+{"id"=>"152606638479851", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=152606638479851&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"2016-07-13 20:18:00 -0400", "page_id"=>"261812373855823"}, 
+
+KoalaWrapper.new(
+    facebook_id: "1279272265429991",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+  [{"created_time"=>"2016-07-20T23:08:41+0000", "id"=>"155067421567106", "field_data"=>[{"name"=>"zip_code", "values"=>["43015"]}, {"name"=>"city", "values"=>["Delaware"]}, {"name"=>"last_name", "values"=>["Brake"]}, {"name"=>"email", "values"=>["rebco1@juno.com"]}, {"name"=>"state", "values"=>["ohio"]}, {"name"=>"company_name", "values"=>["Rebco Group"]}, {"name"=>"first_name", "values"=>["Bob"]}, {"name"=>"phone_number", "values"=>["+17657441130"]}]}]
+
+{"id"=>"1279272265429991", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=1279272265429991&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"2016-06-24 14:46:36 -0400", "page_id"=>"261812373855823"}, 
+KoalaWrapper.new(
+    facebook_id: "1279272265429991",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+
+{"id"=>"1554343678195452", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=1554343678195452&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"Now's the Time to Prepare for Fall Registration!", "page_id"=>"261812373855823"}]
+
+KoalaWrapper.new(
+    facebook_id: "1554343678195452",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+
+
+list ID  6ddd5ba4-ded5-4f2e-acbf-7ab08d32076e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ORIGINAL ONE!
+
+  [{"id"=>"1600075253636138", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=1600075253636138&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"Save valuable time with our end-to-end medical billing services", "page_id"=>"143281019062528"}, 
+
+KoalaWrapper.new(
+    facebook_id: "1600075253636138",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+  => [{"created_time"=>"2016-06-19T20:18:36+0000", "id"=>"1601292900181040", "field_data"=>[{"name"=>"email", "values"=>["oatblanton@aol.com"]}, {"name"=>"full_name", "values"=>["Annette Todd Blanton"]}]}]
+
+
+
+NEED TO USE THIS ONE!
+  {"id"=>"1031124406965238", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=1031124406965238&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"1Save valuable time with our end-to-end medical billing services", "page_id"=>"143281019062528"}, 
+
+KoalaWrapper.new(
+    facebook_id: "1031124406965238",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+  => [{"created_time"=>"2016-06-14T05:46:28+0000", "id"=>"1035785366499142", "field_data"=>[{"name"=>"last_name", "values"=>["Stephens Gagliardi"]}, {"name"=>"email", "values"=>["donnagag1961@yahoo.com"]}, {"name"=>"first_name", "values"=>["Donna"]}]}]
+
+
+
+SKIP!
+  {"id"=>"800318306734613", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=800318306734613&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"Save valuable time with our end-to-end medical billing services2", "page_id"=>"143281019062528"}, 
+
+KoalaWrapper.new(
+    facebook_id: "800318306734613",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+=> []
+
+
+SKIP!
+  {"id"=>"1715706078667780", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=1715706078667780&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"Save valuable time with our end-to-end medical billing services1", "page_id"=>"143281019062528"}, 
+
+KoalaWrapper.new(
+    facebook_id: "1715706078667780",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+=> []
+
+
+
+DO THIS ONE!!!
+  {"id"=>"1688892421333120", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=1688892421333120&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"Save valuable time with our end-to-end medical billing services", "page_id"=>"143281019062528"}]
+
+KoalaWrapper.new(
+    facebook_id: "1688892421333120",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+  => [{"created_time"=>"2016-06-20T18:16:37+0000", "id"=>"1700162960206066", "field_data"=>[{"name"=>"email", "values"=>["bubbanine2003@yahoo.com"]}, {"name"=>"full_name", "values"=>["Raymond L. Summers Jr"]}]}, {"created_time"=>"2016-06-14T01:09:12+0000", "id"=>"1697599043795791", "field_data"=>[{"name"=>"full_name", "values"=>["Leland Green"]}, {"name"=>"email", "values"=>["lelandgreen@greenfarms-ky.com"]}]}, {"created_time"=>"2016-06-11T22:00:25+0000", "id"=>"1696829587206070", "field_data"=>[{"name"=>"email", "values"=>["klj48@galaxycable.net"]}, {"name"=>"full_name", "values"=>["Kenneth Jones"]}]}, {"created_time"=>"2016-06-11T17:50:01+0000", "id"=>"1696778447211184", "field_data"=>[{"name"=>"email", "values"=>["jamesengland05@yahoo.com"]}, {"name"=>"full_name", "values"=>["James England"]}]}, {"created_time"=>"2016-06-11T13:26:47+0000", "id"=>"1696693347219694", "field_data"=>[{"name"=>"email", "values"=>["cbridenb89@aol.com"]}, {"name"=>"full_name", "values"=>["Coni Bridenbaugh"]}]}, {"created_time"=>"2016-06-09T01:49:37+0000", "id"=>"1695711330651229", "field_data"=>[{"name"=>"email", "values"=>["jeremyhead39@yahoo.com"]}, {"name"=>"full_name", "values"=>["Jeremy Head"]}]}, {"created_time"=>"2016-06-08T22:19:37+0000", "id"=>"1695651353990560", "field_data"=>[{"name"=>"email", "values"=>["danarhubbard@yahoo.com"]}, {"name"=>"full_name", "values"=>["Dana Rider Hubbard"]}]}, {"created_time"=>"2016-06-07T02:26:19+0000", "id"=>"1694881130734249", "field_data"=>[{"name"=>"email", "values"=>["kyfrenchmanjr28@gmail.com"]}, {"name"=>"full_name", "values"=>["Jeff Quebedeaux"]}]}, {"created_time"=>"2016-06-01T19:46:01+0000", "id"=>"1692621547626874", "field_data"=>[{"name"=>"email", "values"=>["kaden110413@gmail.com"]}, {"name"=>"full_name", "values"=>["Shelby Nash"]}]}, {"created_time"=>"2016-05-31T20:12:29+0000", "id"=>"1692252060997156", "field_data"=>[{"name"=>"full_name", "values"=>["Ashley John Isabella Jarvis"]}, {"name"=>"email", "values"=>["ashley.cole123450@yahoo.com"]}]}, {"created_time"=>"2016-05-30T23:42:16+0000", "id"=>"1691773064378389", "field_data"=>[{"name"=>"email", "values"=>["alicewages4@gmail.com"]}, {"name"=>"full_name", "values"=>["Alice Wages"]}]}, {"created_time"=>"2016-05-28T03:41:25+0000", "id"=>"1690653461157016", "field_data"=>[{"name"=>"email", "values"=>["urlady420br@gmail.com"]}, {"name"=>"full_name", "values"=>["Sissy Ronda"]}]}, {"created_time"=>"2016-05-27T23:29:19+0000", "id"=>"1690591057829923", "field_data"=>[{"name"=>"email", "values"=>["amber_luvs_preston@hotmail.com"]}, {"name"=>"full_name", "values"=>["Amber Lynn"]}]}, {"created_time"=>"2016-05-27T05:20:20+0000", "id"=>"1690225727866456", "field_data"=>[{"name"=>"email", "values"=>["geedana11@gmail.com"]}, {"name"=>"full_name", "values"=>["Dana Gee"]}]}, {"created_time"=>"2016-05-26T21:02:16+0000", "id"=>"1690127324542963", "field_data"=>[{"name"=>"email", "values"=>["sueknight117@yahoo.com"]}, {"name"=>"full_name", "values"=>["Sue Knight"]}]}]
+
+  So I gotta set the ad.ad_form.facebook_id with each of these that have leads...
+
+  ad.ad_form.update facebook_id: "1031124406965238"
+
+irb(main):059:0> ad.ad_form.update facebook_id: "1031124406965238"
+=> true
+irb(main):060:0> GetLeadsForAdForm.new(ad).call
+=> nil
+
+Guess this one was already synced?
+
+Try the last one:
+
+ad.ad_form.update facebook_id: "1688892421333120"
+
+irb(main):061:0> ad.ad_form.update facebook_id: "1688892421333120"
+=> true
+irb(main):062:0> GetLeadsForAdForm.new(ad).call
+Enqueued PostAdLeadsToClientJob (Job ID: eccb9d08-2d52-4fbf-bdf4-f66e52db23c5) to Sidekiq(default) with arguments: "8f59e79d-5f5a-466c-8be1-ea69775d0ef5", [{:id=>"1700162960206066", :fields=>[{"name"=>"email", "values"=>["bubbanine2003@yahoo.com"]}, {"name"=>"full_name", "values"=>["Raymond L. Summers Jr"]}]}, {:id=>"1697599043795791", :fields=>[{"name"=>"full_name", "values"=>["Leland Green"]}, {"name"=>"email", "values"=>["lelandgreen@greenfarms-ky.com"]}]}, {:id=>"1696829587206070", :fields=>[{"name"=>"email", "values"=>["klj48@galaxycable.net"]}, {"name"=>"full_name", "values"=>["Kenneth Jones"]}]}, {:id=>"1696778447211184", :fields=>[{"name"=>"email", "values"=>["jamesengland05@yahoo.com"]}, {"name"=>"full_name", "values"=>["James England"]}]}, {:id=>"1696693347219694", :fields=>[{"name"=>"email", "values"=>["cbridenb89@aol.com"]}, {"name"=>"full_name", "values"=>["Coni Bridenbaugh"]}]}, {:id=>"1695711330651229", :fields=>[{"name"=>"email", "values"=>["jeremyhead39@yahoo.com"]}, {"name"=>"full_name", "values"=>["Jeremy Head"]}]}, {:id=>"1695651353990560", :fields=>[{"name"=>"email", "values"=>["danarhubbard@yahoo.com"]}, {"name"=>"full_name", "values"=>["Dana Rider Hubbard"]}]}, {:id=>"1694881130734249", :fields=>[{"name"=>"email", "values"=>["kyfrenchmanjr28@gmail.com"]}, {"name"=>"full_name", "values"=>["Jeff Quebedeaux"]}]}]
+[ActiveJob] Enqueued PostAdLeadsToClientJob (Job ID: eccb9d08-2d52-4fbf-bdf4-f66e52db23c5) to Sidekiq(default) with arguments: "8f59e79d-5f5a-466c-8be1-ea69775d0ef5", [{:id=>"1700162960206066", :fields=>[{"name"=>"email", "values"=>["bubbanine2003@yahoo.com"]}, {"name"=>"full_name", "values"=>["Raymond L. Summers Jr"]}]}, {:id=>"1697599043795791", :fields=>[{"name"=>"full_name", "values"=>["Leland Green"]}, {"name"=>"email", "values"=>["lelandgreen@greenfarms-ky.com"]}]}, {:id=>"1696829587206070", :fields=>[{"name"=>"email", "values"=>["klj48@galaxycable.net"]}, {"name"=>"full_name", "values"=>["Kenneth Jones"]}]}, {:id=>"1696778447211184", :fields=>[{"name"=>"email", "values"=>["jamesengland05@yahoo.com"]}, {"name"=>"full_name", "values"=>["James England"]}]}, {:id=>"1696693347219694", :fields=>[{"name"=>"email", "values"=>["cbridenb89@aol.com"]}, {"name"=>"full_name", "values"=>["Coni Bridenbaugh"]}]}, {:id=>"1695711330651229", :fields=>[{"name"=>"email", "values"=>["jeremyhead39@yahoo.com"]}, {"name"=>"full_name", "values"=>["Jeremy Head"]}]}, {:id=>"1695651353990560", :fields=>[{"name"=>"email", "values"=>["danarhubbard@yahoo.com"]}, {"name"=>"full_name", "values"=>["Dana Rider Hubbard"]}]}, {:id=>"1694881130734249", :fields=>[{"name"=>"email", "values"=>["kyfrenchmanjr28@gmail.com"]}, {"name"=>"full_name", "values"=>["Jeff Quebedeaux"]}]}]
+=> #<PostAdLeadsToClientJob:0x007efebdd06638 @arguments=["8f59e79d-5f5a-466c-8be1-ea69775d0ef5", [{:id=>"1700162960206066", :fields=>[{"name"=>"email", "values"=>["bubbanine2003@yahoo.com"]}, {"name"=>"full_name", "values"=>["Raymond L. Summers Jr"]}]}, {:id=>"1697599043795791", :fields=>[{"name"=>"full_name", "values"=>["Leland Green"]}, {"name"=>"email", "values"=>["lelandgreen@greenfarms-ky.com"]}]}, {:id=>"1696829587206070", :fields=>[{"name"=>"email", "values"=>["klj48@galaxycable.net"]}, {"name"=>"full_name", "values"=>["Kenneth Jones"]}]}, {:id=>"1696778447211184", :fields=>[{"name"=>"email", "values"=>["jamesengland05@yahoo.com"]}, {"name"=>"full_name", "values"=>["James England"]}]}, {:id=>"1696693347219694", :fields=>[{"name"=>"email", "values"=>["cbridenb89@aol.com"]}, {"name"=>"full_name", "values"=>["Coni Bridenbaugh"]}]}, {:id=>"1695711330651229", :fields=>[{"name"=>"email", "values"=>["jeremyhead39@yahoo.com"]}, {"name"=>"full_name", "values"=>["Jeremy Head"]}]}, {:id=>"1695651353990560", :fields=>[{"name"=>"email", "values"=>["danarhubbard@yahoo.com"]}, {"name"=>"full_name", "values"=>["Dana Rider Hubbard"]}]}, {:id=>"1694881130734249", :fields=>[{"name"=>"email", "values"=>["kyfrenchmanjr28@gmail.com"]}, {"name"=>"full_name", "values"=>["Jeff Quebedeaux"]}]}]], @job_id="eccb9d08-2d52-4fbf-bdf4-f66e52db23c5", @queue_name="default">
+
+That worked!
+
+Now reset it back to the original...
+
+ad.ad_form.update facebook_id: "1600075253636138"
+
+
+
+[{"created_time"=>"2016-07-11T15:28:08+0000", "id"=>"1290644674292750", "field_data"=>[{"name"=>"email", "values"=>["danceteacherlisa@gmail.com"]}, {"name"=>"first_name", "values"=>["Lisa"]}, {"name"=>"last_name", "values"=>["Hendrickson"]}, {"name"=>"phone_number", "values"=>["+12283244105"]}, {"name"=>"city", "values"=>["Gulfport"]}, {"name"=>"state", "values"=>["MS"]}, {"name"=>"zip_code", "values"=>["39507"]}]}, {"created_time"=>"2016-07-10T18:07:44+0000", "id"=>"1290049624352255", "field_data"=>[{"name"=>"email", "values"=>["spanisheyes0393@gmail.com"]}, {"name"=>"state", "values"=>["NJ"]}, {"name"=>"zip_code", "values"=>["07306"]}, {"name"=>"first_name", "values"=>["Yvonne"]}, {"name"=>"city", "values"=>["Jersey city"]}, {"name"=>"last_name", "values"=>["Medina"]}, {"name"=>"phone_number", "values"=>["+15513587100"]}]}, {"created_time"=>"2016-07-10T13:03:58+0000", "id"=>"1289881864369031", "field_data"=>[{"name"=>"email", "values"=>["sproutstate@gmail.com"]}, {"name"=>"state", "values"=>["NJ"]}, {"name"=>"zip_code", "values"=>["08618"]}, {"name"=>"first_name", "values"=>["Danielle"]}, {"name"=>"city", "values"=>["Trenton"]}, {"name"=>"last_name", "values"=>["Winrow"]}, {"name"=>"phone_number", "values"=>["+16097753058"]}]}, {"created_time"=>"2016-07-10T00:11:52+0000", "id"=>"1289564221067462", "field_data"=>[{"name"=>"email", "values"=>["treshawn@dancingcda.com"]}, {"name"=>"state", "values"=>["NC"]}, {"name"=>"zip_code", "values"=>["28105"]}, {"name"=>"first_name", "values"=>["Treshawn"]}, {"name"=>"city", "values"=>["Charlotte"]}, {"name"=>"last_name", "values"=>["Collins-Brown"]}, {"name"=>"phone_number", "values"=>["+17046053879"]}]}, {"created_time"=>"2016-07-09T22:11:59+0000", "id"=>"1289511797739371", "field_data"=>[{"name"=>"email", "values"=>["lourdesbrezo@gmail.com"]}, {"name"=>"state", "values"=>["NY"]}, {"name"=>"zip_code", "values"=>["11106"]}, {"name"=>"first_name", "values"=>["Lourdes"]}, {"name"=>"city", "values"=>["Astoria"]}, {"name"=>"last_name", "values"=>["Brezo"]}, {"name"=>"phone_number", "values"=>["+16469790316"]}]}, {"created_time"=>"2016-07-08T22:28:45+0000", "id"=>"1288765841147300", "field_data"=>[{"name"=>"email", "values"=>["premiere_danse@yahoo.com"]}, {"name"=>"first_name", "values"=>["Amy"]}, {"name"=>"last_name", "values"=>["Barth Meehan"]}, {"name"=>"phone_number", "values"=>["+17174753347"]}, {"name"=>"city", "values"=>["Lancaster"]}, {"name"=>"state", "values"=>["PA"]}, {"name"=>"zip_code", "values"=>["17602"]}]}, {"created_time"=>"2016-07-06T20:31:47+0000", "id"=>"1287310971292787", "field_data"=>[{"name"=>"email", "values"=>["jacqueline.esteves@gmail.com"]}, {"name"=>"first_name", "values"=>["Jacqueline"]}, {"name"=>"last_name", "values"=>["Esteves"]}, {"name"=>"phone_number", "values"=>["9085785749"]}, {"name"=>"city", "values"=>["Elizabeth"]}, {"name"=>"state", "values"=>["NJ"]}, {"name"=>"zip_code", "values"=>["07202"]}]}, {"created_time"=>"2016-07-06T16:56:43+0000", "id"=>"1287214107969140", "field_data"=>[{"name"=>"state", "values"=>["OH"]}, {"name"=>"last_name", "values"=>["Beierle"]}, {"name"=>"first_name", "values"=>["Sheri"]}, {"name"=>"phone_number", "values"=>["+15132883864"]}, {"name"=>"zip_code", "values"=>["45236"]}, {"name"=>"email", "values"=>["sheribeierle79@gmail.com"]}, {"name"=>"city", "values"=>["Deer Park"]}]}, {"created_time"=>"2016-07-06T00:51:01+0000", "id"=>"1286822028008348", "field_data"=>[{"name"=>"email", "values"=>["Info@guidingsteps.com"]}, {"name"=>"first_name", "values"=>["Debra"]}, {"name"=>"last_name", "values"=>["Wood"]}, {"name"=>"phone_number", "values"=>["+15187911894"]}, {"name"=>"city", "values"=>["Hilton Head Island"]}, {"name"=>"state", "values"=>["SC"]}, {"name"=>"zip_code", "values"=>["12839"]}]}, {"created_time"=>"2016-07-05T20:28:00+0000", "id"=>"1286711521352732", "field_data"=>[{"name"=>"email", "values"=>["lsmith.ad@gmail.com"]}, {"name"=>"state", "values"=>["Kansas"]}, {"name"=>"zip_code", "values"=>["66224"]}, {"name"=>"first_name", "values"=>["Lindsey"]}, {"name"=>"city", "values"=>["Leawood"]}, {"name"=>"last_name", "values"=>["Smith"]}, {"name"=>"phone_number", "values"=>["9137258432"]}]}, {"created_time"=>"2016-07-05T12:02:58+0000", "id"=>"1286459804711237", "field_data"=>[{"name"=>"state", "values"=>["KY"]}, {"name"=>"last_name", "values"=>["Riegling"]}, {"name"=>"first_name", "values"=>["Shannon"]}, {"name"=>"phone_number", "values"=>["+18593314122"]}, {"name"=>"zip_code", "values"=>["41042"]}, {"name"=>"email", "values"=>["missshannonsaadance@gmail.com"]}, {"name"=>"city", "values"=>["florence"]}]}, {"created_time"=>"2016-07-04T15:32:24+0000", "id"=>"1285915204765697", "field_data"=>[{"name"=>"email", "values"=>["gina.chanos@yahoo.com"]}, {"name"=>"first_name", "values"=>["Gina"]}, {"name"=>"last_name", "values"=>["Chanos"]}, {"name"=>"phone_number", "values"=>["+12622321615"]}, {"name"=>"city", "values"=>["Eagle"]}, {"name"=>"state", "values"=>["WI"]}, {"name"=>"zip_code", "values"=>["53119"]}]}, {"created_time"=>"2016-07-01T03:48:12+0000", "id"=>"1283663591657525", "field_data"=>[{"name"=>"email", "values"=>["crystaltaylor@taylorservicesyouthorganization.org"]}, {"name"=>"state", "values"=>["IL"]}, {"name"=>"zip_code", "values"=>["60619"]}, {"name"=>"first_name", "values"=>["Crystal"]}, {"name"=>"city", "values"=>["Chicago"]}, {"name"=>"phone_number", "values"=>["3128377494"]}, {"name"=>"last_name", "values"=>["Taylor"]}]}, {"created_time"=>"2016-06-29T12:12:02+0000", "id"=>"1282550361768848", "field_data"=>[{"name"=>"email", "values"=>["cherie.cox1521@gmail.com"]}, {"name"=>"state", "values"=>["PA"]}, {"name"=>"zip_code", "values"=>["15673"]}, {"name"=>"first_name", "values"=>["Cherie"]}, {"name"=>"city", "values"=>["North Apollo"]}, {"name"=>"last_name", "values"=>["Habian"]}, {"name"=>"phone_number", "values"=>["+14127731777"]}]}, {"created_time"=>"2016-06-26T17:42:09+0000", "id"=>"1280642775292940", "field_data"=>[{"name"=>"email", "values"=>["kristal@prestigeschoolofdance.com"]}, {"name"=>"first_name", "values"=>["Kristal"]}, {"name"=>"last_name", "values"=>["Venters"]}, {"name"=>"phone_number", "values"=>["+17855778051"]}, {"name"=>"city", "values"=>["Salina"]}, {"name"=>"state", "values"=>["KS"]}, {"name"=>"zip_code", "values"=>["67401"]}]}]
+

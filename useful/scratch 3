@@ -1,0 +1,36 @@
+
+irb(main):003:0> ad.ad_account
+=> #<AdAccount id: "cf104a4c-3369-4044-9101-2f77740040d9", facebook_id: "act_731412216997241", tos_accepted: true, user_provisioned: true, facebook_page_name: "HeydayFootwear.com", facebook_page_id: "25543948160", ctct_account_id: nil, api_consumer_id: "6e5e08a6-773a-4f8b-9b0b-b99efbed1744", client_account_id: "ebcad37f-a15d-41e4-8b37-de59edf2fc82", legal_id: "1770601706556970">
+
+
+
+// to get the ad_forms
+  KoalaWrapper.new(
+     facebook_id: "25543948160",
+     endpoint: 'leadgen_forms',
+     params: { }
+   ).get
+
+=> [{"id"=>"570049193199528", "leadgen_export_csv_url"=>"https://www.facebook.com/ads/lead_gen/export_csv/?id=570049193199528&type=form&source_type=graph_api", "locale"=>"en_US", "name"=>"2016-07-20 14:43:30 -0400", "page_id"=>"25543948160"}]
+irb(main):009:0> 
+
+
+   KoalaWrapper.new(
+    facebook_id: "570049193199528",
+    endpoint: 'leads',
+    params: { limit: 1000 }
+  ).get
+
+
+irb(main):014:0> ad
+=> #<Ad id: "6c924117-a878-4e61-bab8-0a2557a04956", deprecated_name: nil, created_at: "2016-07-20 18:41:37", updated_at: "2016-08-01 16:11:03", radius: nil, publish_state: "activated", ctct_campaign_id: nil, target_clicks: nil, target_impressions: nil, ctct_account_id: nil, reach_ratio: #<BigDecimal:7f6e286e94a0,'0.0',9(18)>, spend_ratio: #<BigDecimal:7f6e286e9360,'0.9464E2',18(27)>, ad_account_id: "cf104a4c-3369-4044-9101-2f77740040d9", boost_activity_id: nil, geotargeting: nil, click_through_rate: #<BigDecimal:7f6e286e9018,'0.153E1',18(27)>, disapproval_reason: nil, deleted_at: nil, client_name: "AdLauncher", client_id: "6b00e1f5-ac55-4a94-ae8f-08b8f6bc6d3e", objective: 1>
+
+irb(main):015:0> ad.ad_account
+=> #<AdAccount id: "cf104a4c-3369-4044-9101-2f77740040d9", facebook_id: "act_731412216997241", tos_accepted: true, user_provisioned: true, facebook_page_name: "HeydayFootwear.com", facebook_page_id: "25543948160", ctct_account_id: nil, api_consumer_id: "6e5e08a6-773a-4f8b-9b0b-b99efbed1744", client_account_id: "ebcad37f-a15d-41e4-8b37-de59edf2fc82", legal_id: "1770601706556970">
+irb(main):016:0> 
+
+irb(main):016:0> ad.ad_set
+=> #<AdSet id: "83ebc72f-0e41-457b-a012-de8a2e4c03fc", facebook_id: "6068197560920", deprecated_name: nil, deprecated_campaign_status: nil, budget: 100000, start_time: "2016-07-20 19:14:36", deprecated_ad_campaign_id: nil, created_at: "2016-07-20 18:41:37", updated_at: "2016-07-20 19:14:36", ad_id: "6c924117-a878-4e61-bab8-0a2557a04956", duration: 90, states: "", cities: nil, countries: "US", radius: nil, bid_type: nil, bid_info: nil, deleted_at: nil>
+
+
+  https://business.facebook.com/ads/manager/adset/ads/?act=731412216997241&pid=p3&ids=6068197560920&business_id=446744345464031#
